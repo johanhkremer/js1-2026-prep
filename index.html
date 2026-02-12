@@ -1,40 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>lesson-1-variables-datatypes-console</title>
 </head>
 
 <body>
-    <h1>Lets learn Javascript</h1>
-    <h2>Datatyper</h2>
-    <ul>
-        <ul>
-            <li>string</li>
-            <li>number</li>
-            <li>boolean</li>
-            <li>null</li>
-            <li>undefined</li>
-            <li>object
-                <ul>
-                    <li>arrays</li>
-                    <li>objects</li>
-                    <li>functions</li>
-                </ul>
-            </li>
-            <li>(Bigint)</li>
-            <li>(symbol)</li>
-        </ul>
-    </ul>
+    <header>
+        <h1>JavaScript</h1>
+
+        <nav aria-label="Huvudmeny">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/dataTypes.html">Datatyper</a></li>
+                <li><a href="/arrayesAndObjects.html">Arrays & Objects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section aria-labelledby="what-js">
+            <h2 id="what-js">Vad är JavaScript?</h2>
+            <p>
+                JavaScript är ett programmeringsspråk som gör webbsidor interaktiva. HTML
+                beskriver strukturen, CSS beskriver utseendet och JavaScript beskriver
+                beteendet (logiken).
+            </p>
+        </section>
+
+        <section aria-labelledby="where-js-runs">
+            <h2 id="where-js-runs">Var körs JavaScript?</h2>
+            <ul>
+                <li><strong>I webbläsaren</strong> (Chrome, Firefox, Edge) – för interaktivitet på sidan</li>
+                <li><strong>På servern</strong> (Node.js) – för att bygga API:er och backend</li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="what-js-can-do">
+            <h2 id="what-js-can-do">Vad kan JavaScript göra?</h2>
+            <ul>
+                <li>Reagera på klick, tangenttryckningar och formulär</li>
+                <li>Ändra innehåll på sidan (text, klasser, element)</li>
+                <li>Validera input</li>
+                <li>Hämta data från API:er</li>
+                <li>Bygga hela webbapplikationer (t.ex. med React senare)</li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="how-js-works">
+            <h2 id="how-js-works">Hur “körs” JavaScript?</h2>
+            <ul>
+                <li>JavaScript körs <strong>rad för rad</strong> uppifrån och ned.</li>
+                <li>Det är <strong>dynamiskt typat</strong> – värden kan ha olika typer över tid.</li>
+                <li>Du felsöker oftast med <strong>Console</strong> i DevTools.</li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="connect-js">
+            <h2 id="connect-js">Hur kopplas JavaScript till HTML?</h2>
+            <p>
+                JavaScript kan skrivas direkt i en <code>&lt;script&gt;</code>-tagg eller länkas in som en
+                extern fil (vanligast).
+            </p>
+
+            <h3>Testa JavaScript</h3>
+            <p>
+                Klicka på knappen och öppna sedan DevTools → Console för att se utskriften.
+            </p>
+
+            <button type="button" onclick="sayHello()">Klicka här</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>Öppna DevTools: högerklick → Inspect → Console</p>
+    </footer>
+
+    <script src="/script/index.js"></script>
+
+    <script>
+        function sayHello() {
+            console.log("Hello from JavaScript!");
+            // alert("Hello from JavaScript!");
+        }
+    </script>
 </body>
-<script src="/script/script.js">
-    console.log('Hello World!')
-    console.log('testing', 123)
-</script>
 
 </html>
-
-<!--Ide göra knappar som visar vilken typp det är-->
