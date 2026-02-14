@@ -1,4 +1,4 @@
-//Variabler
+// Variabler
 
 // const
 const konstant = 123
@@ -35,7 +35,7 @@ Blockscope
 console.log(x); // "var"
 console.log(y); // ReferenceError: y is not defined
 
-//Hositing
+// Hositing
 console.log(a); // undefined (var hoistas)
 var a = 1;
 
@@ -48,4 +48,4 @@ let user;
 
 user = null;
 // null = vi har medvetet sagt att det inte finns någon användare
-//Vi kan skriva user = undefined, men det är generellt dålig praxis eftersom undefined normalt är något JavaScript sätter själv.
+// Vi kan skriva user = undefined, men det är generellt dålig praxis eftersom undefined normalt är något JavaScript sätter själv.
