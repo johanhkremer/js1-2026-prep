@@ -9,83 +9,103 @@
 
 <body>
     <header>
-        <h1>JavaScript</h1>
-
-        <nav aria-label="Huvudmeny">
-            <ul>
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="/dataTypes.html">Datatyper</a></li>
-                <li><a href="/arrayesAndObjects.html">Arrays & Objects</a></li>
-            </ul>
-        </nav>
+        <h1>JavaScript - logiska operatorer</h1>
     </header>
 
     <main>
-        <section aria-labelledby="what-js">
-            <h2 id="what-js">Vad är JavaScript?</h2>
+        <section>
+            <h2>Villkor med if / else</h2>
             <p>
-                JavaScript är ett programmeringsspråk som gör webbsidor interaktiva. HTML
-                beskriver strukturen, CSS beskriver utseendet och JavaScript beskriver
-                beteendet (logiken).
+                Med <code>if</code> kan vi låta programmet fatta beslut.
+                Koden i blocket körs bara om villkoret är <code>true</code>.
             </p>
-        </section>
 
-        <section aria-labelledby="where-js-runs">
-            <h2 id="where-js-runs">Var körs JavaScript?</h2>
+            <pre><code>const age = 20;
+
+if (age >= 18) {
+  console.log("Du är myndig");
+}</code></pre>
+
+            <p>
+                Om villkoret är <code>false</code> händer ingenting.
+                Vill vi göra något annat använder vi <code>else</code>.
+            </p>
+
+            <pre><code>const age = 15;
+
+if (age >= 18) {
+  console.log("Du är myndig");
+} else {
+  console.log("Du är inte myndig");
+}</code></pre>
+
+            <h3>Hur det fungerar</h3>
             <ul>
-                <li><strong>I webbläsaren</strong> (Chrome, Firefox, Edge) – för interaktivitet på sidan</li>
-                <li><strong>På servern</strong> (Node.js) – för att bygga API:er och backend</li>
+                <li><code>if</code> = kontrollerar ett villkor</li>
+                <li>Parentesen innehåller villkoret</li>
+                <li>Klamrarna innehåller kod som körs om villkoret är true</li>
+                <li><code>else</code> körs om villkoret är false</li>
             </ul>
         </section>
 
-        <section aria-labelledby="what-js-can-do">
-            <h2 id="what-js-can-do">Vad kan JavaScript göra?</h2>
-            <ul>
-                <li>Reagera på klick, tangenttryckningar och formulär</li>
-                <li>Ändra innehåll på sidan (text, klasser, element)</li>
-                <li>Validera input</li>
-                <li>Hämta data från API:er</li>
-                <li>Bygga hela webbapplikationer (t.ex. med React senare)</li>
-            </ul>
-        </section>
-
-        <section aria-labelledby="how-js-works">
-            <h2 id="how-js-works">Hur “körs” JavaScript?</h2>
-            <ul>
-                <li>JavaScript körs <strong>rad för rad</strong> uppifrån och ned.</li>
-                <li>Det är <strong>dynamiskt typat</strong> – värden kan ha olika typer över tid.</li>
-                <li>Du felsöker oftast med <strong>Console</strong> i DevTools.</li>
-            </ul>
-        </section>
-
-        <section aria-labelledby="connect-js">
-            <h2 id="connect-js">Hur kopplas JavaScript till HTML?</h2>
+        <section>
+            <h2>Logiska operatorer</h2>
             <p>
-                JavaScript kan skrivas direkt i en <code>&lt;script&gt;</code>-tagg eller länkas in som en
-                extern fil (vanligast).
+                Logiska operatorer används för att kombinera flera villkor (true/false).
+                De används ofta tillsammans med <code>if</code>.
             </p>
 
-            <h3>Testa JavaScript</h3>
+            <h3>&amp;&amp; (AND / OCH)</h3>
             <p>
-                Klicka på knappen och öppna sedan DevTools → Console för att se utskriften.
+                <code>&amp;&amp;</code> betyder att <strong>alla</strong> villkor måste vara <code>true</code>.
             </p>
 
-            <button type="button" onclick="sayHello()">Klicka här</button>
+            <pre><code>const age = 20;
+const hasTicket = true;
+
+if (age >= 18 && hasTicket) {
+  console.log("Du får komma in!");
+}</code></pre>
+
+            <h3>|| (OR / ELLER)</h3>
+            <p>
+                <code>||</code> betyder att det räcker att <strong>minst ett</strong> villkor är <code>true</code>.
+            </p>
+
+            <pre><code>const isMember = false;
+const hasCoupon = true;
+
+if (isMember || hasCoupon) {
+  console.log("Du får rabatt!");
+}</code></pre>
+
+            <h3>! (NOT / INTE)</h3>
+            <p>
+                <code>!</code> vänder på ett boolean-värde.
+            </p>
+
+            <pre><code>const isLoggedIn = false;
+
+if (!isLoggedIn) {
+  console.log("Du måste logga in först!");
+}</code></pre>
+
+            <h3>Sammanfattning</h3>
+            <ul>
+                <li><code>if</code> = gör något om villkoret är true</li>
+                <li><code>else</code> = gör något annat om det är false</li>
+                <li><code>&amp;&amp;</code> = OCH</li>
+                <li><code>||</code> = ELLER</li>
+                <li><code>!</code> = INTE</li>
+            </ul>
         </section>
     </main>
 
+
     <footer>
-        <p>Öppna DevTools: högerklick → Inspect → Console</p>
     </footer>
 
     <script src="/script/index.js"></script>
-
-    <script>
-        function sayHello() {
-            console.log("Hello from JavaScript!");
-            // alert("Hello from JavaScript!");
-        }
-    </script>
 </body>
 
 </html>

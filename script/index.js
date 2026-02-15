@@ -1,51 +1,75 @@
-// Variabler
+/* Logiska operatorer */
 
-// const
-const konstant = 123
-console.log("✅ const först:", konstant)
+/* Glöm inte be dem gissa vad resultatet blir och diskutera varför det blir ett visst resultat */
 
-try {
-    konstant = 42
-} catch (error) {
-    console.log("❌ const går inte att ändra:", error.message)
+// Jämförelser
+console.log("5 > 3:", 5 > 3);
+console.log("5 < 3:", 5 < 3);
+console.log("10 >= 10:", 10 >= 10);
+console.log("4 <= 2:", 4 <= 2);
+console.log("false < true:", false < true);
+
+// == jämför värde
+console.log("5 == '5':", 5 == "5");
+
+// === jämför värde + typ
+console.log("5 === '5':", 5 === "5");
+
+// Strängar
+console.log("'string' == 'string':", "string" == "string");
+console.log("'string' === 'string':", "string" === "string");
+
+// Typkonvertering
+console.log("'false' == false:", "false" == false);
+console.log("0 == false:", 0 == false);
+console.log("0 === false:", 0 === false);
+
+//! Vanligast och säkrast att använda ===
+
+/* 
+Program = ett komplett system med tydlig struktur, ofta större och mer självständigt.
+
+Script = en mindre kodfil som körs för att göra något specifikt.
+*/
+
+//if
+const age = 20;
+if (age >= 18) {
+    console.log("Du är myndig ✅");
 }
 
-console.log("😒 const efter försök:", konstant)
-
-// let
-let looseyGoosey = "Älg"
-console.log("✅ let först:", looseyGoosey)
-
-looseyGoosey = "Anka"
-console.log("✅ let efter:", looseyGoosey)
-
-// var
-var oldSchool = 10
-console.log("var först:", oldSchool)
-
-oldSchool = 20
-console.log("var efter:", oldSchool)
-
-Blockscope
-{
-    var x = "var";
-    let y = "let";
+if (age < 18) {
+    console.log("Du är inte myndig 🚨");
 }
 
-console.log(x); // "var"
-console.log(y); // ReferenceError: y is not defined
+//if else
+if (age >= 18) {
+    console.log("Du är myndig ✅");
+} else {
+    console.log("Du är inte myndig 🚨");
+}
 
-// Hositing
-console.log(a); // undefined (var hoistas)
-var a = 1;
+const temperature = 25;
+if (temperature > 20) {
+    console.log("Det är varmt 🥵");
+} else {
+    console.log("Det är kallt 🥶");
+}
 
-console.log(b); // ReferenceError (temporal dead zone)
-let b = 1;
+// &&
+const hasPassword = true;
+const isAdmin = true;
 
-// Undefined & null
-let user;
-// undefined = variabeln finns, men har inget värde än
+if (hasPassword && isAdmin) {
+    console.log("Du får tillgång till systemet 🔓");
+} else {
+    console.log("Du får inte tillgång till systemet 🚨")
+}
 
-user = null;
-// null = vi har medvetet sagt att det inte finns någon användare
-// Vi kan skriva user = undefined, men det är generellt dålig praxis eftersom undefined normalt är något JavaScript sätter själv.
+// ||
+const isMember = false;
+const hasCoupon = true;
+
+if (isMember || hasCoupon) {
+    console.log("Du får rabatt");
+}
