@@ -1,75 +1,39 @@
-/* Logiska operatorer */
+// console.log(1)
+// console.log(2)
+// console.log(3)
+// console.log(4)
+// console.log(5)
+// console.log(6)
+// console.log(7)
+// console.log(8)
+// console.log(9)
+// console.log(10)
 
-/* Glöm inte be dem gissa vad resultatet blir och diskutera varför det blir ett visst resultat */
-
-// Jämförelser
-console.log("5 > 3:", 5 > 3);
-console.log("5 < 3:", 5 < 3);
-console.log("10 >= 10:", 10 >= 10);
-console.log("4 <= 2:", 4 <= 2);
-console.log("false < true:", false < true);
-
-// == jämför värde
-console.log("5 == '5':", 5 == "5");
-
-// === jämför värde + typ
-console.log("5 === '5':", 5 === "5");
-
-// Strängar
-console.log("'string' == 'string':", "string" == "string");
-console.log("'string' === 'string':", "string" === "string");
-
-// Typkonvertering
-console.log("'false' == false:", "false" == false);
-console.log("0 == false:", 0 == false);
-console.log("0 === false:", 0 === false);
-
-//! Vanligast och säkrast att använda ===
+// Inte DRY, hur kan vi effektivisera detta?
 
 /* 
-Program = ett komplett system med tydlig struktur, ofta större och mer självständigt.
-
-Script = en mindre kodfil som körs för att göra något specifikt.
+for (start; villkor; uppdatering) {
+    vad ska hända vid varje loop?
+ }
 */
 
-//if
-const age = 20;
-if (age >= 18) {
-    console.log("Du är myndig ✅");
+//for loop
+
+for (let i = 0; i <= 10; i++) {
+    console.log(i)
+    console.log(i + 10)
+    console.log("Hej hopp vi kan räkna")
 }
 
-if (age < 18) {
-    console.log("Du är inte myndig 🚨");
+// ++ är samma som += 1
+
+//while loop
+
+let i = 1
+
+while (i <= 5) {
+    console.log(i)
+    i++
 }
 
-//if else
-if (age >= 18) {
-    console.log("Du är myndig ✅");
-} else {
-    console.log("Du är inte myndig 🚨");
-}
-
-const temperature = 25;
-if (temperature > 20) {
-    console.log("Det är varmt 🥵");
-} else {
-    console.log("Det är kallt 🥶");
-}
-
-// &&
-const hasPassword = true;
-const isAdmin = true;
-
-if (hasPassword && isAdmin) {
-    console.log("Du får tillgång till systemet 🔓");
-} else {
-    console.log("Du får inte tillgång till systemet 🚨")
-}
-
-// ||
-const isMember = false;
-const hasCoupon = true;
-
-if (isMember || hasCoupon) {
-    console.log("Du får rabatt");
-}
+// Utan i++ så hamnar vi i en infinie loop

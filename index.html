@@ -9,103 +9,68 @@
 
 <body>
     <header>
-        <h1>JavaScript - logiska operatorer</h1>
+        <h1>JavaScript</h1>
     </header>
 
     <main>
-        <section>
-            <h2>Villkor med if / else</h2>
-            <p>
-                Med <code>if</code> kan vi låta programmet fatta beslut.
-                Koden i blocket körs bara om villkoret är <code>true</code>.
-            </p>
+        <h2>Loopar i JavaScript</h2>
 
-            <pre><code>const age = 20;
+        <p>
+            Ibland vill vi köra samma kod flera gånger.
+            Då använder vi en <strong>loop</strong>.
+        </p>
 
-if (age >= 18) {
-  console.log("Du är myndig");
-}</code></pre>
+        <h3>for-loop</h3>
+        <p>
+            En <strong>for-loop</strong> används när vi vet hur många gånger något ska köras.
+        </p>
+        <p>
+            Den består av tre delar:
+        </p>
+        <ul>
+            <li>Startvärde (var börjar vi?)</li>
+            <li>Villkor (hur länge ska loopen köras?)</li>
+            <li>Uppräkning (hur ändras värdet varje varv?)</li>
+        </ul>
+        <p>
+            Exempel: Räkna från 1 till 5.
+        </p>
 
-            <p>
-                Om villkoret är <code>false</code> händer ingenting.
-                Vill vi göra något annat använder vi <code>else</code>.
-            </p>
+        <h3>do...while-loop</h3>
+        <p>
+            En <strong>do...while-loop</strong> kör alltid minst en gång.
+        </p>
+        <p>
+            Först körs koden, sedan kontrolleras villkoret.
+        </p>
+        <p>
+            Det betyder att även om villkoret är falskt från början,
+            så körs loopen ändå en gång.
+        </p>
 
-            <pre><code>const age = 15;
+        <h3>Viktigt att tänka på</h3>
+        <p>
+            Om villkoret i en loop aldrig blir falskt kan vi få en
+            <strong>infinite loop</strong> (oändlig loop).
+        </p>
+        <p>
+            Då fortsätter programmet att köra för alltid och kan frysa webbläsaren.
+            Därför måste vi alltid se till att något i loopen ändras så att villkoret
+            till slut blir falskt.
+        </p>
 
-if (age >= 18) {
-  console.log("Du är myndig");
-} else {
-  console.log("Du är inte myndig");
-}</code></pre>
-
-            <h3>Hur det fungerar</h3>
-            <ul>
-                <li><code>if</code> = kontrollerar ett villkor</li>
-                <li>Parentesen innehåller villkoret</li>
-                <li>Klamrarna innehåller kod som körs om villkoret är true</li>
-                <li><code>else</code> körs om villkoret är false</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Logiska operatorer</h2>
-            <p>
-                Logiska operatorer används för att kombinera flera villkor (true/false).
-                De används ofta tillsammans med <code>if</code>.
-            </p>
-
-            <h3>&amp;&amp; (AND / OCH)</h3>
-            <p>
-                <code>&amp;&amp;</code> betyder att <strong>alla</strong> villkor måste vara <code>true</code>.
-            </p>
-
-            <pre><code>const age = 20;
-const hasTicket = true;
-
-if (age >= 18 && hasTicket) {
-  console.log("Du får komma in!");
-}</code></pre>
-
-            <h3>|| (OR / ELLER)</h3>
-            <p>
-                <code>||</code> betyder att det räcker att <strong>minst ett</strong> villkor är <code>true</code>.
-            </p>
-
-            <pre><code>const isMember = false;
-const hasCoupon = true;
-
-if (isMember || hasCoupon) {
-  console.log("Du får rabatt!");
-}</code></pre>
-
-            <h3>! (NOT / INTE)</h3>
-            <p>
-                <code>!</code> vänder på ett boolean-värde.
-            </p>
-
-            <pre><code>const isLoggedIn = false;
-
-if (!isLoggedIn) {
-  console.log("Du måste logga in först!");
-}</code></pre>
-
-            <h3>Sammanfattning</h3>
-            <ul>
-                <li><code>if</code> = gör något om villkoret är true</li>
-                <li><code>else</code> = gör något annat om det är false</li>
-                <li><code>&amp;&amp;</code> = OCH</li>
-                <li><code>||</code> = ELLER</li>
-                <li><code>!</code> = INTE</li>
-            </ul>
-        </section>
+        <h3>Skillnaden</h3>
+        <ul>
+            <li><strong>for</strong> → används när vi vet hur många gånger.</li>
+            <li><strong>do...while</strong> → kör minst en gång oavsett villkor.</li>
+        </ul>
     </main>
-
 
     <footer>
     </footer>
 
     <script src="/script/index.js"></script>
+    <script src="/script/array-loop.js"></script>
 </body>
 
 </html>
