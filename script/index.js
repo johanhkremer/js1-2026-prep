@@ -1,39 +1,61 @@
-// console.log(1)
-// console.log(2)
-// console.log(3)
-// console.log(4)
-// console.log(5)
-// console.log(6)
-// console.log(7)
-// console.log(8)
-// console.log(9)
-// console.log(10)
-
-// Inte DRY, hur kan vi effektivisera detta?
-
-/* 
-for (start; villkor; uppdatering) {
-    vad ska hända vid varje loop?
- }
-*/
-
-//for loop
-
-for (let i = 0; i <= 10; i++) {
-    console.log(i)
-    console.log(i + 10)
-    console.log("Hej hopp vi kan räkna")
+//function
+function basicFunction() {
+    console.log("Jag är en funktion 🔥")
 }
 
-// ++ är samma som += 1
+basicFunction()
+basicFunction()
+basicFunction()
 
-//while loop
-
-let i = 1
-
-while (i <= 5) {
-    console.log(i)
-    i++
+function greet(name) {
+    return "Hej " + name
 }
 
-// Utan i++ så hamnar vi i en infinie loop
+console.log(greet("Johan"))
+
+//---------------------------------------------
+
+//arrow-function (modern)
+const add = (a, b) => {
+    return a + b
+}
+
+console.log(add(5, 3))
+
+const shortArrow = () => console.log("Short arrow function")
+
+shortArrow();
+
+//---------------------------------------------
+
+//scope example
+let globalVariable = "Jag är global"
+
+function testScope() {
+    let localVariable = "Jag är lokal"
+    console.log(globalVariable)
+    console.log(localVariable)
+}
+
+testScope()
+
+console.log(globalVariable)
+// console.log(localVariable) // Error
+
+//---------------------------------------------
+
+//Ytterligare exempel
+function outer() {
+    let counter = 0
+
+    return () => {
+        counter++
+        return counter
+    }
+}
+
+const increment = outer()
+
+console.log(increment())
+console.log(increment())
+console.log(increment())

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lesson-1-variables-datatypes-console</title>
+    <title>lesson-5-function-scope</title>
 </head>
 
 <body>
@@ -13,64 +13,46 @@
     </header>
 
     <main>
-        <h2>Loopar i JavaScript</h2>
+        <h2>Funktioner &amp; scope</h2>
 
         <p>
-            Ibland vill vi köra samma kod flera gånger.
-            Då använder vi en <strong>loop</strong>.
+            En <strong>funktion</strong> är som en liten “maskin” i JavaScript: du ger den ett namn,
+            och sedan kan du köra samma kod flera gånger utan att kopiera den.
+            Funktioner gör koden <em>tydligare</em>, <em>enklare att återanvända</em> och lättare att felsöka.
         </p>
 
-        <h3>for-loop</h3>
         <p>
-            En <strong>for-loop</strong> används när vi vet hur många gånger något ska köras.
-        </p>
-        <p>
-            Den består av tre delar:
-        </p>
-        <ul>
-            <li>Startvärde (var börjar vi?)</li>
-            <li>Villkor (hur länge ska loopen köras?)</li>
-            <li>Uppräkning (hur ändras värdet varje varv?)</li>
-        </ul>
-        <p>
-            Exempel: Räkna från 1 till 5.
+            I en funktion kan du ta emot <strong>parametrar</strong> (värden in) och du kan
+            <strong>returnera</strong> något (värde ut). Tänk: <em>in → bearbeta → ut</em>.
         </p>
 
-        <h3>do...while-loop</h3>
+        <h3>Scope (var saker “finns”)</h3>
+
         <p>
-            En <strong>do...while-loop</strong> kör alltid minst en gång.
-        </p>
-        <p>
-            Först körs koden, sedan kontrolleras villkoret.
-        </p>
-        <p>
-            Det betyder att även om villkoret är falskt från början,
-            så körs loopen ändå en gång.
+            <strong>Scope</strong> betyder var i koden en variabel är synlig och kan användas.
+            En variabel som skapas <strong>inne i en funktion</strong> finns bara där inne - utanför
+            funktionen är den “osynlig”. Det hjälper oss att undvika krockar och hålla koden organiserad.
         </p>
 
-        <h3>Viktigt att tänka på</h3>
         <p>
-            Om villkoret i en loop aldrig blir falskt kan vi få en
-            <strong>infinite loop</strong> (oändlig loop).
-        </p>
-        <p>
-            Då fortsätter programmet att köra för alltid och kan frysa webbläsaren.
-            Därför måste vi alltid se till att något i loopen ändras så att villkoret
-            till slut blir falskt.
+            I JavaScript är <code>let</code> och <code>const</code> <strong>block-scope</strong> (de gäller i ett
+            block med <code>{ }</code>), medan <code>var</code> ofta beter sig mer “globalt” och kan skapa
+            oväntade buggar.
         </p>
 
-        <h3>Skillnaden</h3>
-        <ul>
-            <li><strong>for</strong> → används när vi vet hur många gånger.</li>
-            <li><strong>do...while</strong> → kör minst en gång oavsett villkor.</li>
-        </ul>
+        <h3>Varning: infinite loop</h3>
+
+        <p>
+            När vi jobbar med funktioner och loopar är det extra viktigt att alltid ha ett tydligt stopp-villkor.
+            Om en loop aldrig når sitt stopp kan du få en <strong>infinite loop</strong> - då kan sidan frysa
+            och webbläsaren bli seg eller låsa sig.
+        </p>
     </main>
 
     <footer>
     </footer>
 
     <script src="/script/index.js"></script>
-    <script src="/script/array-loop.js"></script>
 </body>
 
 </html>
