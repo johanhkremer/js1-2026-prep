@@ -1,61 +1,129 @@
-//function
-function basicFunction() {
-    console.log("Jag är en funktion 🔥")
-}
+let fruits = ["Apple", "Banana", "Orange", "Strawberry", "Blueberry", "Mango"]
 
-basicFunction()
-basicFunction()
-basicFunction()
+console.log("🍊, 🍌, 🥭", fruits)
 
-function greet(name) {
-    return "Hej " + name
-}
+console.log("length ", fruits.length)
 
-console.log(greet("Johan"))
+fruits.push("pinaple")
 
-//---------------------------------------------
+console.log("🍍 Frukter efter en lagts till:", fruits)
 
-//arrow-function (modern)
-const add = (a, b) => {
-    return a + b
-}
+console.log("length ", fruits.length)
 
-console.log(add(5, 3))
+console.log("Sista frukten i listan är: ", fruits.at(-1))
 
-const shortArrow = () => console.log("Short arrow function")
+fruits.pop()
 
-shortArrow();
+console.log("Sista frukten i listan är: ", fruits.at(-1))
 
-//---------------------------------------------
+console.log("🍌 fruits innehåller Banana: ", fruits.includes("Banana")) // true/false
+console.log("🍌 Banana har platsen: ", fruits.indexOf("Banana"))  // index eller -1
 
-//scope example
-let globalVariable = "Jag är global"
+//Bra för att visa att “början” är dyrare/krångligare i arrayer och att index flyttas.
+fruits.unshift("Kiwi") // lägger först
+console.log(fruits)
 
-function testScope() {
-    let localVariable = "Jag är lokal"
-    console.log(globalVariable)
-    console.log(localVariable)
-}
+const first = fruits.shift() // tar bort första
+console.log("Tog bort:", first)
+console.log(fruits)
 
-testScope()
+const someFruits = fruits.slice(1, 4) // tar ut en del
+console.log("Original:", fruits)
+console.log("Ny:", someFruits)
 
-console.log(globalVariable)
-// console.log(localVariable) // Error
+console.log(fruits.join(", 😋 "))
 
-//---------------------------------------------
+/*
+==============================
+ARRAYMETODER – SNABBÖVERSIKT
+==============================
 
-//Ytterligare exempel
-function outer() {
-    let counter = 0
+🟢 UTAN CALLBACK
 
-    return () => {
-        counter++
-        return counter
-    }
-}
+length
+- Antal element i arrayen
+- Syntax: array.length
 
-const increment = outer()
+at()
+- Hämtar element på index (kan använda -1 för sista)
+- Syntax: array.at(index)
 
-console.log(increment())
-console.log(increment())
-console.log(increment())
+push()
+- Lägger till i slutet
+- Syntax: array.push(value)
+
+pop()
+- Tar bort sista elementet
+- Syntax: array.pop()
+
+shift()
+- Tar bort första elementet
+- Syntax: array.shift()
+
+unshift()
+- Lägger till i början
+- Syntax: array.unshift(value)
+
+includes()
+- Kollar om värde finns (true/false)
+- Syntax: array.includes(value)
+
+indexOf()
+- Returnerar index för värde (eller -1)
+- Syntax: array.indexOf(value)
+
+join()
+- Gör om array till sträng
+- Syntax: array.join(separator)
+
+slice()
+- Skapar kopia av del av array (ändrar inte original)
+- Syntax: array.slice(start, end)
+
+concat()
+- Slår ihop arrayer
+- Syntax: array.concat(otherArray)
+
+
+🟡 MED CALLBACK (vanliga)
+
+forEach()
+- Kör kod för varje element
+- Syntax: array.forEach(element => { })
+
+find()
+- Returnerar första matchande värdet
+- Syntax: array.find(element => condition)
+
+findIndex()
+- Returnerar index för första match
+- Syntax: array.findIndex(element => condition)
+
+filter()
+- Returnerar alla som matchar villkor
+- Syntax: array.filter(element => condition)
+
+map()
+- Skapar ny array genom att ändra varje element
+- Syntax: array.map(element => newValue)
+
+some()
+- Minst ett element uppfyller villkoret (true/false)
+- Syntax: array.some(element => condition)
+
+every()
+- Alla element uppfyller villkoret (true/false)
+- Syntax: array.every(element => condition)
+
+
+🔵 MER AVANCERAD
+
+reduce()
+- Samlar ihop array till ett värde (t.ex. summa)
+- Syntax: array.reduce((acc, element) => { return newValue }, startValue)
+
+sort()
+- Sorterar array (ändrar original)
+- Syntax: array.sort()
+- Med compare: array.sort((a, b) => a - b)
+*/

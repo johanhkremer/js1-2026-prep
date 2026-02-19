@@ -13,39 +13,54 @@
     </header>
 
     <main>
-        <h2>Funktioner &amp; scope</h2>
+        <h2>Arrayer &amp; array-metoder</h2>
 
         <p>
-            En <strong>funktion</strong> är som en liten “maskin” i JavaScript: du ger den ett namn,
-            och sedan kan du köra samma kod flera gånger utan att kopiera den.
-            Funktioner gör koden <em>tydligare</em>, <em>enklare att återanvända</em> och lättare att felsöka.
+            En <strong>array</strong> är en lista med värden. Istället för att skapa många variabler
+            kan vi samla flera värden i en och samma struktur.
+            Varje värde i en array har en <strong>position (index)</strong> som börjar på 0.
         </p>
 
         <p>
-            I en funktion kan du ta emot <strong>parametrar</strong> (värden in) och du kan
-            <strong>returnera</strong> något (värde ut). Tänk: <em>in → bearbeta → ut</em>.
+            Arrayer används när vi vill lagra flera saker tillsammans - till exempel namn,
+            produkter, poäng eller uppgifter. Vi kan hämta ett enskilt värde genom dess index
+            eller arbeta med hela listan samtidigt.
         </p>
 
-        <h3>Scope (var saker “finns”)</h3>
+        <h3>Array-metoder</h3>
 
         <p>
-            <strong>Scope</strong> betyder var i koden en variabel är synlig och kan användas.
-            En variabel som skapas <strong>inne i en funktion</strong> finns bara där inne - utanför
-            funktionen är den “osynlig”. Det hjälper oss att undvika krockar och hålla koden organiserad.
+            JavaScript har många inbyggda <strong>array-metoder</strong> som gör det enklare
+            att arbeta med listor. Istället för att skriva avancerade loopar kan vi använda
+            färdiga metoder för att:
+        </p>
+
+        <ul>
+            <li>Lägga till eller ta bort värden</li>
+            <li>Gå igenom varje element</li>
+            <li>Skapa en ny array baserad på en gammal</li>
+            <li>Filtrera fram vissa värden</li>
+            <li>Kontrollera om något finns i listan</li>
+        </ul>
+
+        <p>
+            Några vanliga metoder är <code>push()</code>, <code>pop()</code>,
+            <code>map()</code>, <code>filter()</code> och <code>forEach()</code>.
+            De hjälper oss att skriva renare och mer läsbar kod.
+        </p>
+
+        <h3>Viktigt att tänka på</h3>
+
+        <p>
+            Vissa array-metoder <strong>ändrar den ursprungliga arrayen</strong>
+            (till exempel <code>push()</code>), medan andra skapar en
+            <strong>ny array</strong> (till exempel <code>map()</code> och <code>filter()</code>).
+            Det är viktigt att förstå skillnaden så att du inte råkar ändra data av misstag.
         </p>
 
         <p>
-            I JavaScript är <code>let</code> och <code>const</code> <strong>block-scope</strong> (de gäller i ett
-            block med <code>{ }</code>), medan <code>var</code> ofta beter sig mer “globalt” och kan skapa
-            oväntade buggar.
-        </p>
-
-        <h3>Varning: infinite loop</h3>
-
-        <p>
-            När vi jobbar med funktioner och loopar är det extra viktigt att alltid ha ett tydligt stopp-villkor.
-            Om en loop aldrig når sitt stopp kan du få en <strong>infinite loop</strong> - då kan sidan frysa
-            och webbläsaren bli seg eller låsa sig.
+            Arrayer och array-metoder är centrala i modern JavaScript och används
+            hela tiden när vi jobbar med data, DOM-manipulation och interaktiva webbsidor.
         </p>
     </main>
 
