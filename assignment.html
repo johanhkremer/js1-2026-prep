@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/assignment.css">
+    <title>Miniuppgift - Inköpslistan</title>
+</head>
+
+<body>
+    <header>
+        <h1>🧪 Miniuppgift - Inköpslistan</h1>
+        <p class="muted">
+            Träna på funktioner + vanliga arraymetoder genom att bygga små “kommandon” för en
+            inköpslista. Du ska endast använda console.log för att skriva ut resultatet av dina kommandon.
+        </p>
+    </header>
+
+    <main>
+        <section class="card" aria-labelledby="start">
+            <h2 id="start">Startkod</h2>
+            <pre><code>let shoppingList = ["Milk", "Bread", "Eggs", "Pasta", "Tomatoes"]</code></pre>
+        </section>
+
+        <section class="card" aria-labelledby="krav">
+            <h2 id="krav">Krav</h2>
+            <ul>
+                <li>Använd funktioner.</li>
+                <li>
+                    Använd minst <strong>3 arraymetoder</strong> totalt (t.ex. <code>push</code>,
+                    <code>includes</code>, <code>indexOf</code>, <code>splice</code>, <code>join</code>,
+                    <code>length</code>).
+                </li>
+            </ul>
+        </section>
+
+        <section class="card" aria-labelledby="del1">
+            <h2 id="del1">1) Lägg till en vara</h2>
+            <p>Skriv en funktion som tar emot ett namn och lägger till det i listan.</p>
+            <p>Efteråt ska den skriva ut:</p>
+            <ul>
+                <li>listan</li>
+                <li>nya längden</li>
+            </ul>
+        </section>
+
+        <section class="card" aria-labelledby="del2">
+            <h2 id="del2">2) Ta bort en vara (om den finns)</h2>
+            <p>Skriv en funktion som tar emot ett namn och:</p>
+            <ul>
+                <li>om varan finns → ta bort den och skriv ut <em>“Tog bort …”</em></li>
+                <li>annars → skriv ut <em>“Finns inte …”</em></li>
+            </ul>
+        </section>
+
+        <section class="card" aria-labelledby="del3">
+            <h2 id="del3">3) Skriv ut listan snyggt</h2>
+            <p>
+                Skriv en funktion som skriver ut hela listan som en sträng (med
+                <code>join</code>), t.ex:
+            </p>
+            <pre><code>Milk 🛒 Bread 🛒 Eggs ...</code></pre>
+        </section>
+
+        <section class="card" aria-labelledby="tips">
+            <h2 id="tips">Tips</h2>
+            <ul>
+                <li>Testa dina funktioner genom att anropa dem flera gånger.</li>
+                <li>Skriv ut i konsolen efter varje steg så du ser att allt fungerar.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="muted">
+        <p>Javascript 1 - Arraymetoder</p>
+    </footer>
+</body>
+
+</html>
