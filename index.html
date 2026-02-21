@@ -4,63 +4,93 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/index.css">
     <title>lesson-5-function-scope</title>
 </head>
 
 <body>
     <header>
         <h1>JavaScript</h1>
+        <a href="/assignment.html">Uppgift</a>
     </header>
 
     <main>
-        <h2>Arrayer &amp; array-metoder</h2>
+        <h2>Array-metoder – forEach(), map() & filter()</h2>
 
         <p>
-            En <strong>array</strong> är en lista med värden. Istället för att skapa många variabler
-            kan vi samla flera värden i en och samma struktur.
-            Varje värde i en array har en <strong>position (index)</strong> som börjar på 0.
+            I den här lektionen fokuserar vi på hur vi kan <strong>arbeta med innehållet</strong> i en array.
+            Istället för att bara lägga till eller ta bort värden ska vi nu börja
+            <strong>bearbeta data</strong>.
         </p>
 
         <p>
-            Arrayer används när vi vill lagra flera saker tillsammans - till exempel namn,
-            produkter, poäng eller uppgifter. Vi kan hämta ett enskilt värde genom dess index
-            eller arbeta med hela listan samtidigt.
+            Arrayer används ofta för att lagra listor med information – till exempel
+            namn, priser, produkter eller poäng. Men det räcker inte att bara lagra datan.
+            Vi behöver också kunna göra något med den.
         </p>
 
-        <h3>Array-metoder</h3>
+        <h3>Arbeta med varje element</h3>
 
         <p>
-            JavaScript har många inbyggda <strong>array-metoder</strong> som gör det enklare
-            att arbeta med listor. Istället för att skriva avancerade loopar kan vi använda
-            färdiga metoder för att:
-        </p>
-
-        <ul>
-            <li>Lägga till eller ta bort värden</li>
-            <li>Gå igenom varje element</li>
-            <li>Skapa en ny array baserad på en gammal</li>
-            <li>Filtrera fram vissa värden</li>
-            <li>Kontrollera om något finns i listan</li>
-        </ul>
-
-        <p>
-            Några vanliga metoder är <code>push()</code>, <code>pop()</code>,
-            <code>map()</code>, <code>filter()</code> och <code>forEach()</code>.
-            De hjälper oss att skriva renare och mer läsbar kod.
-        </p>
-
-        <h3>Viktigt att tänka på</h3>
-
-        <p>
-            Vissa array-metoder <strong>ändrar den ursprungliga arrayen</strong>
-            (till exempel <code>push()</code>), medan andra skapar en
-            <strong>ny array</strong> (till exempel <code>map()</code> och <code>filter()</code>).
-            Det är viktigt att förstå skillnaden så att du inte råkar ändra data av misstag.
+            Metoden <code>forEach()</code> låter oss gå igenom varje värde i en array.
+            Den används när vi vill <strong>göra något med varje element</strong>,
+            till exempel skriva ut det i konsolen eller uppdatera något i DOM:en.
         </p>
 
         <p>
-            Arrayer och array-metoder är centrala i modern JavaScript och används
-            hela tiden när vi jobbar med data, DOM-manipulation och interaktiva webbsidor.
+            Viktigt: <code>forEach()</code> skapar inte en ny array.
+            Den används bara för att köra kod för varje värde.
+        </p>
+
+        <h3>Skapa en ny array med förändrat innehåll</h3>
+
+        <p>
+            Metoden <code>map()</code> används när vi vill ta en array
+            och skapa en <strong>ny array</strong> där varje värde har förändrats.
+        </p>
+
+        <p>
+            Exempel: om vi har en lista med priser kan vi använda
+            <code>map()</code> för att lägga på moms på varje pris.
+        </p>
+
+        <p>
+            Viktigt: <code>map()</code> ändrar inte original-arrayen –
+            den returnerar en helt ny array.
+        </p>
+
+        <h3>Filtrera fram vissa värden</h3>
+
+        <p>
+            Metoden <code>filter()</code> används när vi vill skapa en
+            <strong>ny array med bara vissa värden</strong>.
+        </p>
+
+        <p>
+            Vi anger ett villkor, och bara de värden som uppfyller villkoret
+            kommer med i den nya arrayen.
+        </p>
+
+        <p>
+            Precis som <code>map()</code> skapar <code>filter()</code> en ny array
+            utan att ändra den ursprungliga.
+        </p>
+
+        <h3>En viktig skillnad</h3>
+
+        <p>
+            <code>forEach()</code> används för att utföra en handling.
+        </p>
+
+        <p>
+            <code>map()</code> och <code>filter()</code> används för att
+            <strong>skapa nya arrayer</strong>.
+        </p>
+
+        <p>
+            Att förstå skillnaden mellan dessa tre är centralt i modern JavaScript.
+            De används hela tiden när vi arbetar med data,
+            särskilt i större applikationer och ramverk som React.
         </p>
     </main>
 

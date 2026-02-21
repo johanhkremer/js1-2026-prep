@@ -1,37 +1,34 @@
-let fruits = ["Apple", "Banana", "Orange", "Strawberry", "Blueberry", "Mango"]
+let numbers = [1, 2, 3, 4, 5]
 
-console.log("🍊, 🍌, 🥭", fruits)
+for (let i = 0; i < numbers.length; i++) {
+    console.log(numbers[i])
+}
 
-console.log("length ", fruits.length)
+numbers.forEach(function (number) {
+    console.log("forEach", number)
+})
 
-fruits.push("pinaple")
+numbers.forEach(number => console.log("forEach 🏹-function", number))
 
-console.log("🍍 Frukter efter en lagts till:", fruits)
+numbers.forEach((number) => console.log(number + 2))
 
-console.log("length ", fruits.length)
+console.log(numbers.forEach((number) => console.log(number + 2)))
 
-console.log("Sista frukten i listan är: ", fruits.at(-1))
+console.log(numbers.map((number) => console.log(number + 2)))
 
-fruits.pop()
+//Skilland mellan forEach() => arbater med samma array i minnet och map() => map skapar en ny array i minnet
 
-console.log("Sista frukten i listan är: ", fruits.at(-1))
+const studentNames = ["Eva", "Stefan", "Malin", "Mohammed"]
 
-console.log("🍌 fruits innehåller Banana: ", fruits.includes("Banana")) // true/false
-console.log("🍌 Banana har platsen: ", fruits.indexOf("Banana"))  // index eller -1
+//Prova med forEach, undefined och map (ny array i minnet)
+let names = studentNames.forEach(name => name.toLocaleLowerCase())
+console.log(names)
 
-//Bra för att visa att “början” är dyrare/krångligare i arrayer och att index flyttas.
-fruits.unshift("Kiwi") // lägger först
-console.log(fruits)
+const filterdNumbers = numbers.filter((number) => { number <= 3 })
+console.log(filterdNumbers)
 
-const first = fruits.shift() // tar bort första
-console.log("Tog bort:", first)
-console.log(fruits)
-
-const someFruits = fruits.slice(1, 4) // tar ut en del
-console.log("Original:", fruits)
-console.log("Ny:", someFruits)
-
-console.log(fruits.join(", 😋 "))
+const filterdNames = studentNames.filter(name => name.includes("M"))
+console.log(filterdNames)
 
 /*
 ==============================

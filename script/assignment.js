@@ -1,67 +1,131 @@
-// 🧪 Miniuppgift – Inköpslistan
+// 🧪 Avslutande uppgift – “Loot Filter” (enkelt format)
 
-// Du har en inköpslista:
+// Du har en lista med loot. Varje item är en sträng och börjar med en rarity-tag:
 
-// let shoppingList = ["Milk", "Bread", "Eggs", "Pasta", "Tomatoes"]
+// [C] = common
 
-// Koden ska kunna:
-// 1) Lägga till en vara
+// [R] = rare
 
-// Skriv en funktion som tar emot ett namn och lägger till det i listan.
-// Efteråt ska den skriva ut:
+// [E] = epic
 
-// listan
+// const loot = [
+//     "[C] Iron Sword",
+//     "[C] Health Potion",
+//     "[R] Shadow Dagger",
+//     "[E] Dragon Helm",
+//     "[C] Mana Potion",
+//     "[E] Frost Staff",
+//     "[C] Leather Boots",
+//     "[R] Titan Shield",
+//     "[E] Phoenix Feather",
+//     "[R] Silver Ring",
 
-// nya längden
+//     "[C] Wooden Shield",
+//     "[R] Crimson Blade",
+//     "[E] Stormbreaker Axe",
+//     "[C] Stamina Potion",
+//     "[R] Obsidian Armor",
+//     "[E] Celestial Bow",
+//     "[C] Cloth Gloves",
+//     "[R] Emerald Amulet",
+//     "[E] Void Staff",
+//     "[C] Minor Healing Potion"
+// ]
+// 🎯 Målet
 
-// 2) Ta bort en vara (om den finns)
+// Skapa en ny lista i console som bara visar “bra loot” och formaterar den snyggt.
 
-// Skriv en funktion som tar emot ett namn och:
+// ✅ Del 1 – Filter: bara Rare och Epic
 
-// om varan finns → ta bort den och skriv ut “Tog bort …”
+// Filtrera fram bara items som är [R] eller [E].
 
-// annars → skriv ut “Finns inte …”
+// Tips: .startsWith("[R]") och .startsWith("[E]")
 
-// 3) Skriv ut listan snyggt
+// ✅ Del 2 – Filter: bara “gear”
 
-// Skriv en funktion som skriver ut hela listan som en sträng (med join), t.ex:
+// Filtrera bort potions.
 
-// Milk 🛒 Bread 🛒 Eggs ...
+// Ett item räknas som potion om det innehåller ordet "Potion".
 
-// Krav
+// Tips: !item.includes("Potion")
 
-// Använd funktioner
+// ✅ Del 3 – Map: gör texten snygg
 
-// Använd minst 3 arraymetoder totalt (t.ex. push, includes, indexOf, splice, join, length)
+// Omvandla listan så att varje item får formatet:
 
-// Miniuppgift – Lösning (Inköpslistan)
+// [R] Shadow Dagger → RARE: Shadow Dagger
 
-let shoppingList = ["Milk", "Bread", "Eggs", "Pasta", "Tomatoes"]
+// [E] Frost Staff → EPIC: Frost Staff
 
-const addItem = (item) => {
-    shoppingList.push(item)
-    console.log("✅ Tillagd:", item)
-    console.log("🛒 Lista:", shoppingList)
-    console.log("📏 Antal:", shoppingList.length)
-}
+// Tips: Du kan använda replace() för att byta taggarna:
 
-const removeItem = (item) => {
-    const index = shoppingList.indexOf(item)
+// item.replace("[R] ", "RARE: ")
 
-    index !== -1
-        ? (shoppingList.splice(index, 1), console.log("🗑️ Tog bort:", item))
-        : console.log("❌ Finns inte:", item)
+// item.replace("[E] ", "EPIC: ")
 
-    console.log("🛒 Lista:", shoppingList)
-}
+// ✅ Del 4 – Map: lägg på en “🔥”-ikon på Epic
 
-const printList = () => {
-    console.log("🛒", shoppingList.join(" 🛒 "))
-}
+// Alla “EPIC”-items ska få en ikon i slutet:
 
-// Testkörning
-printList()
-addItem("Cheese")
-removeItem("Eggs")
-removeItem("Coffee")
-printList()
+// EPIC: Frost Staff 🔥
+
+// 🔎 Krav
+
+// Du ska använda filter() och map()
+
+// Du får inte ändra loot-arrayen
+
+// Skriv ut resultat efter varje steg med console.log
+
+// ⭐ Extra (om de hinner)
+
+// Skapa en variabel:
+
+// const search = "Shield"
+
+// Filtrera slutresultatet så att bara items som innehåller search visas.
+
+const loot = [
+    "[C] Iron Sword",
+    "[C] Health Potion",
+    "[R] Shadow Dagger",
+    "[E] Dragon Helm",
+    "[C] Mana Potion",
+    "[E] Frost Staff",
+    "[C] Leather Boots",
+    "[R] Titan Shield",
+    "[E] Phoenix Feather",
+    "[R] Silver Ring"
+]
+
+// Steg 1 – Filter: bara Rare och Epic
+const rareAndEpic = loot.filter(
+    (item) => item.startsWith("[R]") || item.startsWith("[E]")
+)
+console.log("Steg 1 - Rare & Epic:", rareAndEpic)
+
+// Steg 2 – Filter: ta bort potions
+const noPotions = rareAndEpic.filter((item) => !item.includes("Potion"))
+console.log("Steg 2 - Utan potions:", noPotions)
+
+// Steg 3 – Map: gör texten snygg
+const formatted = noPotions.map((item) =>
+    item
+        .replace("[R] ", "RARE: ")
+        .replace("[E] ", "EPIC: ")
+)
+console.log("Steg 3 - Formaterat:", formatted)
+
+// Steg 4 – Map: lägg på 🔥 på Epic
+const finalList = formatted.map((item) =>
+    item.startsWith("EPIC:") ? `${item} 🔥` : item
+)
+console.log("Steg 4 - Slutresultat:", finalList)
+
+// (Extra) Sökfilter
+const search = "Shield"
+const searched = finalList.filter((item) => item.includes(search))
+console.log("Extra - Sök:", searched)
+
+// Visa att originalet inte ändrats
+console.log("Original loot:", loot)

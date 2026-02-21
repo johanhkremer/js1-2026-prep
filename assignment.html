@@ -4,77 +4,126 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/assignment.css">
-    <title>Miniuppgift - Inköpslistan</title>
+    <link rel="stylesheet" href="/css/assignment.css" />
+    <title>Avslutande uppgift - Loot Filter</title>
 </head>
 
 <body>
-    <header>
-        <h1>🧪 Miniuppgift - Inköpslistan</h1>
-        <p class="muted">
-            Träna på funktioner + vanliga arraymetoder genom att bygga små “kommandon” för en
-            inköpslista. Du ska endast använda console.log för att skriva ut resultatet av dina kommandon.
-        </p>
+    <header class="page-header">
+        <div class="container">
+            <h1>🧪 Avslutande uppgift - Loot Filter</h1>
+            <p class="muted">
+                Träna på <strong>filter()</strong> och <strong>map()</strong> genom att bygga ett enkelt “loot filter”.
+                Du ska bara använda <strong>console.log</strong> för att visa resultaten efter varje steg.
+            </p>
+
+            <div class="badges" aria-label="Uppgiftsinfo">
+                <span class="badge">Array-metoder</span>
+                <span class="badge">filter()</span>
+                <span class="badge">map()</span>
+                <span class="badge">Inga objekt</span>
+            </div>
+        </div>
     </header>
 
-    <main>
+    <main class="container">
         <section class="card" aria-labelledby="start">
             <h2 id="start">Startkod</h2>
-            <pre><code>let shoppingList = ["Milk", "Bread", "Eggs", "Pasta", "Tomatoes"]</code></pre>
+            <p class="muted">Kopiera in detta i din <code>script.js</code>:</p>
+            <pre><code>const loot = [
+  "[C] Iron Sword",
+  "[C] Health Potion",
+  "[R] Shadow Dagger",
+  "[E] Dragon Helm",
+  "[C] Mana Potion",
+  "[E] Frost Staff",
+  "[C] Leather Boots",
+  "[R] Titan Shield",
+  "[E] Phoenix Feather",
+  "[R] Silver Ring",
+  "[C] Wooden Shield",
+  "[R] Crimson Blade",
+  "[E] Stormbreaker Axe",
+  "[C] Stamina Potion",
+  "[R] Obsidian Armor",
+  "[E] Celestial Bow",
+  "[C] Cloth Gloves",
+  "[R] Emerald Amulet",
+  "[E] Void Staff",
+  "[C] Minor Healing Potion"
+]</code></pre>
         </section>
 
-        <section class="card" aria-labelledby="krav">
-            <h2 id="krav">Krav</h2>
+        <section class="card" aria-labelledby="rules">
+            <h2 id="rules">Regler</h2>
             <ul>
-                <li>Använd funktioner.</li>
-                <li>
-                    Använd minst <strong>3 arraymetoder</strong> totalt (t.ex. <code>push</code>,
-                    <code>includes</code>, <code>indexOf</code>, <code>splice</code>, <code>join</code>,
-                    <code>length</code>).
-                </li>
+                <li>Du får <strong>inte</strong> ändra <code>loot</code>-arrayen.</li>
+                <li>Du ska använda <code>filter()</code> och <code>map()</code>.</li>
+                <li>Skriv ut resultatet efter varje steg med <code>console.log</code>.</li>
             </ul>
         </section>
 
         <section class="card" aria-labelledby="del1">
-            <h2 id="del1">1) Lägg till en vara</h2>
-            <p>Skriv en funktion som tar emot ett namn och lägger till det i listan.</p>
-            <p>Efteråt ska den skriva ut:</p>
-            <ul>
-                <li>listan</li>
-                <li>nya längden</li>
-            </ul>
+            <h2 id="del1">1) Filter - bara Rare och Epic</h2>
+            <p>Skapa en ny array som bara innehåller items som är <code>[R]</code> eller <code>[E]</code>.</p>
+            <p class="hint">
+                Tips: <code>startsWith("[R]")</code> och <code>startsWith("[E]")</code>
+            </p>
         </section>
 
         <section class="card" aria-labelledby="del2">
-            <h2 id="del2">2) Ta bort en vara (om den finns)</h2>
-            <p>Skriv en funktion som tar emot ett namn och:</p>
-            <ul>
-                <li>om varan finns → ta bort den och skriv ut <em>“Tog bort …”</em></li>
-                <li>annars → skriv ut <em>“Finns inte …”</em></li>
-            </ul>
+            <h2 id="del2">2) Filter - ta bort potions</h2>
+            <p>Filtrera bort alla items som innehåller ordet <code>"Potion"</code>.</p>
+            <p class="hint">
+                Tips: <code>!item.includes("Potion")</code>
+            </p>
         </section>
 
         <section class="card" aria-labelledby="del3">
-            <h2 id="del3">3) Skriv ut listan snyggt</h2>
-            <p>
-                Skriv en funktion som skriver ut hela listan som en sträng (med
-                <code>join</code>), t.ex:
+            <h2 id="del3">3) Map – gör texten snygg</h2>
+            <p>Omvandla items till detta format:</p>
+            <ul>
+                <li><code>[R] Shadow Dagger</code> → <code>RARE: Shadow Dagger</code></li>
+                <li><code>[E] Frost Staff</code> → <code>EPIC: Frost Staff</code></li>
+            </ul>
+            <p class="hint">
+                Tips: <code>replace()</code> för att byta ut taggarna.
             </p>
-            <pre><code>Milk 🛒 Bread 🛒 Eggs ...</code></pre>
         </section>
 
-        <section class="card" aria-labelledby="tips">
-            <h2 id="tips">Tips</h2>
-            <ul>
-                <li>Testa dina funktioner genom att anropa dem flera gånger.</li>
-                <li>Skriv ut i konsolen efter varje steg så du ser att allt fungerar.</li>
-            </ul>
+        <section class="card" aria-labelledby="del4">
+            <h2 id="del4">4) Map – lägg på 🔥 på Epic</h2>
+            <p>Alla items som börjar med <code>EPIC:</code> ska få en ikon i slutet:</p>
+            <pre><code>EPIC: Frost Staff 🔥</code></pre>
+            <p class="hint">
+                Tips: ternary <code>? :</code och <code>startsWith("EPIC:")</code>
+            </p>
+        </section>
+
+        <section class="card" aria-labelledby="output">
+            <h2 id="output">Krav på output</h2>
+            <p>Du ska logga tydligt efter varje steg, t.ex:</p>
+            <pre><code>console.log("Steg 1 - Rare & Epic:", steg1)
+console.log("Steg 2 - Utan potions:", steg2)
+console.log("Steg 3 - Formaterat:", steg3)
+console.log("Steg 4 - Slutresultat:", steg4)
+console.log("Original loot:", loot)</code></pre>
+        </section>
+
+        <section class="card" aria-labelledby="extra">
+            <h2 id="extra">Extra (valfritt)</h2>
+            <p>Skapa en variabel och filtrera slutresultatet på ett sökord:</p>
+            <pre><code>const search = "Shield"</code></pre>
+            <p class="muted">Målet: bara visa rader som innehåller <code>search</code>.</p>
         </section>
     </main>
 
-    <footer class="muted">
-        <p>Javascript 1 - Arraymetoder</p>
+    <footer class="page-footer">
+        <div class="container muted">
+            <p>JavaScript 1 - Arraymetoder: <code>filter()</code> &amp; <code>map()</code></p>
+        </div>
     </footer>
+    <script src="/script/assignment.js"></script>
 </body>
 
 </html>
