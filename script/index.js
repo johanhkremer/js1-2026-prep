@@ -1,126 +1,198 @@
-let numbers = [1, 2, 3, 4, 5]
+// Object = nyckel: värde
 
-for (let i = 0; i < numbers.length; i++) {
-    console.log(numbers[i])
+const name = "Rick Sanchez"
+const age = 70
+const email = "rick.sanchez@portalmail.com"
+const dimension = "C-137"
+
+/* ---------------------------------------- */
+
+const character = {
+    name: "Rick Sanchez",
+    age: 70,
+    email: "rick.sanchez@portalmail.com",
+    dimension: "C-137"
 }
 
-numbers.forEach(function (number) {
-    console.log("forEach", number)
-})
+console.log(character)
 
-numbers.forEach(number => console.log("forEach 🏹-function", number))
+/* ---------------------------------------- */
 
-numbers.forEach((number) => console.log(number + 2))
+let characters = [
+    {
+        id: 1,
+        name: "Rick Sanchez",
+        age: 70,
+        email: "rick.sanchez@portalmail.com",
+        street: "Garage Lab 1",
+        city: "Seattle",
+        zip: "98101",
+        dimension: "C-137"
+    },
+    {
+        id: 2,
+        name: "Morty Smith",
+        age: 14,
+        email: "morty.smith@schoolmail.com",
+        street: "Suburb Street 42",
+        city: "Seattle",
+        zip: "98102",
+        dimension: "C-137"
+    },
+    {
+        id: 3,
+        name: "Summer Smith",
+        age: 17,
+        email: "summer.smith@schoolmail.com",
+        street: "Suburb Street 42",
+        city: "Seattle",
+        zip: "98102",
+        dimension: "C-137"
+    },
+    {
+        id: 4,
+        name: "Beth Smith",
+        age: 35,
+        email: "beth.smith@vetmail.com",
+        street: "Suburb Street 42",
+        city: "Seattle",
+        zip: "98102",
+        dimension: "C-137"
+    },
+    {
+        id: 5,
+        name: "Jerry Smith",
+        age: 38,
+        email: "jerry.smith@workmail.com",
+        street: "Suburb Street 42",
+        city: "Seattle",
+        zip: "98102",
+        dimension: "C-137"
+    },
+    {
+        id: 6,
+        name: "Evil Morty",
+        age: 14,
+        email: "evil.morty@citadel.gov",
+        street: "Citadel Central Tower",
+        city: "Citadel of Ricks",
+        zip: "CITADEL-001",
+        dimension: "Unknown"
+    },
+    {
+        id: 7,
+        name: "Birdperson",
+        age: 45,
+        email: "birdperson@resistance.net",
+        street: "Rebel Base Alpha",
+        city: "Bird World",
+        zip: "BW-909",
+        dimension: "Bird World"
+    },
+    {
+        id: 8,
+        name: "Tammy Guetermann",
+        age: 22,
+        email: "tammy@galacticfederation.gov",
+        street: "Federation HQ",
+        city: "New Galactic Order",
+        zip: "GF-777",
+        dimension: "Federation Prime"
+    }
+]
 
-console.log(numbers.forEach((number) => console.log(number + 2)))
+console.log(characters.map((character) => character.name))
 
-console.log(numbers.map((number) => console.log(number + 2)))
+console.log(characters.map((character) => { return character.email }))
 
-//Skilland mellan forEach() => arbater med samma array i minnet och map() => map skapar en ny array i minnet
+console.log(characters.filter((character) => character.dimension !== "C-137"))
 
-const studentNames = ["Eva", "Stefan", "Malin", "Mohammed"]
+console.log("Antal karaktärer: ", characters.length)
 
-//Prova med forEach, undefined och map (ny array i minnet)
-let names = studentNames.forEach(name => name.toLocaleLowerCase())
-console.log(names)
-
-const filterdNumbers = numbers.filter((number) => { number <= 3 })
-console.log(filterdNumbers)
-
-const filterdNames = studentNames.filter(name => name.includes("M"))
-console.log(filterdNames)
-
-/*
-==============================
-ARRAYMETODER – SNABBÖVERSIKT
-==============================
-
-🟢 UTAN CALLBACK
-
-length
-- Antal element i arrayen
-- Syntax: array.length
-
-at()
-- Hämtar element på index (kan använda -1 för sista)
-- Syntax: array.at(index)
-
-push()
-- Lägger till i slutet
-- Syntax: array.push(value)
-
-pop()
-- Tar bort sista elementet
-- Syntax: array.pop()
-
-shift()
-- Tar bort första elementet
-- Syntax: array.shift()
-
-unshift()
-- Lägger till i början
-- Syntax: array.unshift(value)
-
-includes()
-- Kollar om värde finns (true/false)
-- Syntax: array.includes(value)
-
-indexOf()
-- Returnerar index för värde (eller -1)
-- Syntax: array.indexOf(value)
-
-join()
-- Gör om array till sträng
-- Syntax: array.join(separator)
-
-slice()
-- Skapar kopia av del av array (ändrar inte original)
-- Syntax: array.slice(start, end)
-
-concat()
-- Slår ihop arrayer
-- Syntax: array.concat(otherArray)
+characters.push(
+    {
+        id: 9,
+        name: "Mr. Meeseeks",
+        age: 1,
+        email: "existence.is.pain@meeseeksbox.io",
+        street: "Meeseeks Box",
+        city: "Unknown",
+        zip: "00001",
+        dimension: "Meeseeks Realm"
+    })
+console.log("Add one character")
+console.log("Antal karaktärer: ", characters.length)
+console.log(characters)
 
 
-🟡 MED CALLBACK (vanliga)
+/* ---------------------------------------- */
 
-forEach()
-- Kör kod för varje element
-- Syntax: array.forEach(element => { })
+const charactersDetailed = [
+    {
+        id: 1,
+        name: "Rick Sanchez",
+        age: 70,
+        email: "rick.sanchez@citadel.space",
+        isScientist: true,
+        address: {
+            street: "Earth C-137 Garage Lab",
+            city: "Dimension C-137",
+            zip: "C137-001"
+        }
+    },
+    {
+        id: 2,
+        name: "Morty Smith",
+        age: 14,
+        email: "morty.smith@earthschool.com",
+        isScientist: false,
+        address: {
+            street: "Haunted House Suburb 42",
+            city: "Dimension C-137",
+            zip: "C137-042"
+        }
+    },
+    {
+        id: 3,
+        name: "Summer Smith",
+        age: 17,
+        email: "summer.smith@earthschool.com",
+        isScientist: false,
+        address: {
+            street: "Haunted House Suburb 42",
+            city: "Dimension C-137",
+            zip: "C137-042"
+        }
+    },
+    {
+        id: 4,
+        name: "Beth Smith",
+        age: 35,
+        email: "beth.smith@galacticvet.com",
+        isScientist: false,
+        address: {
+            street: "Haunted House Suburb 42",
+            city: "Dimension C-137",
+            zip: "C137-042"
+        }
+    },
+    {
+        id: 5,
+        name: "Jerry Smith",
+        age: 38,
+        email: "jerry.smith@interdimensional.marketing",
+        isScientist: false,
+        address: {
+            street: "Haunted House Suburb 42",
+            city: "Dimension C-137",
+            zip: "C137-042"
+        }
+    }
+]
 
-find()
-- Returnerar första matchande värdet
-- Syntax: array.find(element => condition)
+//Template string
+console.log(charactersDetailed.map((character) => {
+    return `${character.name} lives on street ${character.address.street}`
+}))
 
-findIndex()
-- Returnerar index för första match
-- Syntax: array.findIndex(element => condition)
-
-filter()
-- Returnerar alla som matchar villkor
-- Syntax: array.filter(element => condition)
-
-map()
-- Skapar ny array genom att ändra varje element
-- Syntax: array.map(element => newValue)
-
-some()
-- Minst ett element uppfyller villkoret (true/false)
-- Syntax: array.some(element => condition)
-
-every()
-- Alla element uppfyller villkoret (true/false)
-- Syntax: array.every(element => condition)
-
-
-🔵 MER AVANCERAD
-
-reduce()
-- Samlar ihop array till ett värde (t.ex. summa)
-- Syntax: array.reduce((acc, element) => { return newValue }, startValue)
-
-sort()
-- Sorterar array (ändrar original)
-- Syntax: array.sort()
-- Med compare: array.sort((a, b) => a - b)
-*/
+console.log(charactersDetailed.filter(character => character.isScientist === true))

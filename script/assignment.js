@@ -1,131 +1,146 @@
-// 🧪 Avslutande uppgift – “Loot Filter” (enkelt format)
+// 🛸 Avslutande uppgift – “Portal Pass Control” (Objects)
 
-// Du har en lista med loot. Varje item är en sträng och börjar med en rarity-tag:
+// Story: Citadel of Ricks har ett problem: fel personer slinker igenom portaler. Du ska bygga ett litet “kontrollsystem” som jobbar med karaktär-objekt.
 
-// [C] = common
-
-// [R] = rare
-
-// [E] = epic
-
-// const loot = [
-//     "[C] Iron Sword",
-//     "[C] Health Potion",
-//     "[R] Shadow Dagger",
-//     "[E] Dragon Helm",
-//     "[C] Mana Potion",
-//     "[E] Frost Staff",
-//     "[C] Leather Boots",
-//     "[R] Titan Shield",
-//     "[E] Phoenix Feather",
-//     "[R] Silver Ring",
-
-//     "[C] Wooden Shield",
-//     "[R] Crimson Blade",
-//     "[E] Stormbreaker Axe",
-//     "[C] Stamina Potion",
-//     "[R] Obsidian Armor",
-//     "[E] Celestial Bow",
-//     "[C] Cloth Gloves",
-//     "[R] Emerald Amulet",
-//     "[E] Void Staff",
-//     "[C] Minor Healing Potion"
+// ✅ Startkod (klistra in)
+// const portalPasses = [
+//   {
+//     id: 1,
+//     name: "Rick Sanchez",
+//     species: "Human",
+//     dimension: "C-137",
+//     clearance: 5,
+//     isWanted: false,
+//     inventory: { portalGun: true, meeseeksBox: true, crystals: 3 },
+//     address: { street: "Garage Lab 1", city: "Seattle", zip: "98101" }
+//   },
+//   {
+//     id: 2,
+//     name: "Morty Smith",
+//     species: "Human",
+//     dimension: "C-137",
+//     clearance: 1,
+//     isWanted: false,
+//     inventory: { portalGun: false, meeseeksBox: false, crystals: 0 },
+//     address: { street: "Suburb Street 42", city: "Seattle", zip: "98102" }
+//   },
+//   {
+//     id: 3,
+//     name: "Summer Smith",
+//     species: "Human",
+//     dimension: "C-137",
+//     clearance: 2,
+//     isWanted: false,
+//     inventory: { portalGun: false, meeseeksBox: false, crystals: 1 },
+//     address: { street: "Suburb Street 42", city: "Seattle", zip: "98102" }
+//   },
+//   {
+//     id: 4,
+//     name: "Birdperson",
+//     species: "Bird-Person",
+//     dimension: "Bird World",
+//     clearance: 4,
+//     isWanted: false,
+//     inventory: { portalGun: false, meeseeksBox: false, crystals: 2 },
+//     address: { street: "Rebel Base Alpha", city: "Bird World", zip: "BW-909" }
+//   },
+//   {
+//     id: 5,
+//     name: "Evil Morty",
+//     species: "Human",
+//     dimension: "Unknown",
+//     clearance: 5,
+//     isWanted: true,
+//     inventory: { portalGun: true, meeseeksBox: false, crystals: 9 },
+//     address: { street: "Citadel Central Tower", city: "Citadel of Ricks", zip: "CITADEL-001" }
+//   }
 // ]
 // 🎯 Målet
 
-// Skapa en ny lista i console som bara visar “bra loot” och formaterar den snyggt.
+// Skapa “godkända resenärer” och skriv ut resultatet efter varje steg.
 
-// ✅ Del 1 – Filter: bara Rare och Epic
+// Regel: Du får inte ändra original-arrayen portalPasses.
 
-// Filtrera fram bara items som är [R] eller [E].
+// ✅ Del 1 – Map: gör en snabb “namnlista”
 
-// Tips: .startsWith("[R]") och .startsWith("[E]")
+// Skapa en ny lista som bara innehåller:
 
-// ✅ Del 2 – Filter: bara “gear”
+// name
 
-// Filtrera bort potions.
+// dimension
 
-// Ett item räknas som potion om det innehåller ordet "Potion".
+// Format:
 
-// Tips: !item.includes("Potion")
+// Rick Sanchez (C-137)
 
-// ✅ Del 3 – Map: gör texten snygg
+// Tips: template string + map().
 
-// Omvandla listan så att varje item får formatet:
+// ✅ Del 2 – Filter: stoppa efterlysta
 
-// [R] Shadow Dagger → RARE: Shadow Dagger
+// Filtrera fram alla som är isWanted: true.
 
-// [E] Frost Staff → EPIC: Frost Staff
+// Skriv ut:
 
-// Tips: Du kan använda replace() för att byta taggarna:
+// antal efterlysta
 
-// item.replace("[R] ", "RARE: ")
+// deras namn
 
-// item.replace("[E] ", "EPIC: ")
+// ✅ Del 3 – Filter: vilka får gå igenom portalen?
 
-// ✅ Del 4 – Map: lägg på en “🔥”-ikon på Epic
+// En karaktär är “godkänd” om:
 
-// Alla “EPIC”-items ska få en ikon i slutet:
+// clearance >= 3
 
-// EPIC: Frost Staff 🔥
+// inventory.portalGun === true
 
-// 🔎 Krav
+// isWanted === false
 
-// Du ska använda filter() och map()
+// Skriv ut “Approved list”.
 
-// Du får inte ändra loot-arrayen
+// ✅ Del 4 – Map: skapa “passerkort” (nested + format)
 
-// Skriv ut resultat efter varje steg med console.log
+// Omvandla Approved list till objekt med format:
 
-// ⭐ Extra (om de hinner)
+// {
+//   id: 1,
+//   badge: "✅ Rick Sanchez | CL:5 | Seattle (98101)",
+//   crystals: 3
+// }
 
-// Skapa en variabel:
+// badge ska använda address.city och address.zip
 
-// const search = "Shield"
+// crystals ska komma från inventory.crystals
 
-// Filtrera slutresultatet så att bara items som innehåller search visas.
+// ✅ Del 5 – Find + Update: beslagta portal gun
 
-const loot = [
-    "[C] Iron Sword",
-    "[C] Health Potion",
-    "[R] Shadow Dagger",
-    "[E] Dragon Helm",
-    "[C] Mana Potion",
-    "[E] Frost Staff",
-    "[C] Leather Boots",
-    "[R] Titan Shield",
-    "[E] Phoenix Feather",
-    "[R] Silver Ring"
-]
+// Hitta “Morty Smith” med find().
 
-// Steg 1 – Filter: bara Rare och Epic
-const rareAndEpic = loot.filter(
-    (item) => item.startsWith("[R]") || item.startsWith("[E]")
-)
-console.log("Steg 1 - Rare & Epic:", rareAndEpic)
+// Skapa en ny version av Morty (nytt objekt) där:
 
-// Steg 2 – Filter: ta bort potions
-const noPotions = rareAndEpic.filter((item) => !item.includes("Potion"))
-console.log("Steg 2 - Utan potions:", noPotions)
+// inventory.portalGun blir true
 
-// Steg 3 – Map: gör texten snygg
-const formatted = noPotions.map((item) =>
-    item
-        .replace("[R] ", "RARE: ")
-        .replace("[E] ", "EPIC: ")
-)
-console.log("Steg 3 - Formaterat:", formatted)
+// inventory.crystals ökar med +1
 
-// Steg 4 – Map: lägg på 🔥 på Epic
-const finalList = formatted.map((item) =>
-    item.startsWith("EPIC:") ? `${item} 🔥` : item
-)
-console.log("Steg 4 - Slutresultat:", finalList)
+// Skriv ut:
 
-// (Extra) Sökfilter
-const search = "Shield"
-const searched = finalList.filter((item) => item.includes(search))
-console.log("Extra - Sök:", searched)
+// gamla Morty (oförändrad)
 
-// Visa att originalet inte ändrats
-console.log("Original loot:", loot)
+// nya Morty (uppdaterad)
+
+// Tips: spread ... för både character och inventory.
+
+// ⭐ Extra (om de hinner) – “Sök i staden”
+
+// Skapa:
+
+// const searchCity = "Seattle"
+
+// Filtrera fram alla som bor i address.city === searchCity och skriv ut deras name.
+
+// 🔎 Krav (som du kan läsa upp högt)
+
+// Du måste använda map, filter, find
+
+// Du måste använda dot-notation (character.address.city)
+
+// Du får inte mutera portalPasses
