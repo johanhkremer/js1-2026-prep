@@ -59,3 +59,18 @@ do {
     console.log("🔄 Do while loop", i)
     i++
 } while (i < 5)
+
+//! Förberedelse inför uppgift
+//Operatorn % ger resten efter en division.
+console.log(10 % 2)
+console.log(9 % 2)
+console.log(8 % 2)
+console.log(7 % 2)
+
+console.log(4 % 2 === 0)
+
+for (let i = 0; i <= 20; i++) {
+    if (i % 2 === 0) {
+        console.log(i, "🔥")
+    }
+}
