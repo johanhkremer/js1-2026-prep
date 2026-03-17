@@ -19,7 +19,6 @@ const names = ["Anna", "Johan", "Sara", "Erik"]
 for (let i = 0; i < names.length; i++) {
     if (names[i] === "Johan") {
         console.log("⭐ VIP-hälsning till Johan!")
-        names.push("Mohammed ☀️")
     } else {
         console.log("Hej " + names[i] + "!")
     }
