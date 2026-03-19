@@ -1,12 +1,12 @@
-let fruits = ["Apple", "Banana", "Orange", "Strawberry", "Blueberry", "Mango"]
+let fruits = ["🍎 Apple", "🍌 Banana", "🍊 Orange", "🍓 Strawberry", "🫐 Blueberry", "🥭 Mango"]
 
-console.log("🍊, 🍌, 🥭", fruits)
+console.log("Fruits: ", fruits)
 
-console.log("length ", fruits.length)
+console.log("Fruits length ", fruits.length)
 
 fruits.push("pinaple")
 
-console.log("🍍 Frukter efter en lagts till:", fruits)
+console.log("Frukter efter en lagts till (🍍):", fruits)
 
 console.log("length ", fruits.length)
 
@@ -99,6 +99,17 @@ findIndex()
 - Returnerar index för första match
 - Syntax: array.findIndex(element => condition)
 
+some()
+- Minst ett element uppfyller villkoret (true/false)
+- Syntax: array.some(element => condition)
+
+every()
+- Alla element uppfyller villkoret (true/false)
+- Syntax: array.every(element => condition)
+
+------------------------------------------------------
+Ger tillbaka en ny array
+------------------------------------------------------
 filter()
 - Returnerar alla som matchar villkor
 - Syntax: array.filter(element => condition)
@@ -107,13 +118,8 @@ map()
 - Skapar ny array genom att ändra varje element
 - Syntax: array.map(element => newValue)
 
-some()
-- Minst ett element uppfyller villkoret (true/false)
-- Syntax: array.some(element => condition)
 
-every()
-- Alla element uppfyller villkoret (true/false)
-- Syntax: array.every(element => condition)
+
 
 
 🔵 MER AVANCERAD
