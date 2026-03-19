@@ -102,19 +102,29 @@ console.log(globalVariable)
 
 //---------------------------------------------
 
-//Ytterligare exempel
-function outer() {
-    let counter = 0
+//Hoisting
 
-    return function inner() {
-        counter++
-        return counter
-    }
+hoisted()
+
+function hoisted() {
+    console.log("Jag blir hoistad")
 }
 
-const increment = outer()
+// notHosited()
 
-console.log(increment())
-console.log(increment())
-console.log(increment())
-console.log(increment())
+const notHosited = function () {
+    console.log("Jag blir inte hositad")
+}
+
+// RETURN
+const arrowReturn = (a, b) => {
+    return a + b
+}
+
+const answer = arrowReturn(10, 5)
+
+console.log(arrowReturn(2, 5))
+
+console.log(arrowReturn(9, 1))
+
+console.log(answer)
