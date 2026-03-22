@@ -1,3 +1,5 @@
+// Enkla arraymetoder
+
 let fruits = ["🍎 Apple", "🍌 Banana", "🍊 Orange", "🍓 Strawberry", "🫐 Blueberry", "🥭 Mango"]
 
 console.log("Fruits: ", fruits)
@@ -20,7 +22,7 @@ console.log("🍌 fruits innehåller Banana: ", fruits.includes("Banana")) // tr
 console.log("🍌 Banana har platsen: ", fruits.indexOf("Banana"))  // index eller -1
 
 //Bra för att visa att “början” är dyrare/krångligare i arrayer och att index flyttas.
-fruits.unshift("Kiwi") // lägger först
+fruits.unshift("🥝 Kiwi") // lägger först
 console.log(fruits)
 
 const first = fruits.shift() // tar bort första
@@ -35,10 +37,10 @@ console.log(fruits.join(", 😋 "))
 
 /*
 ==============================
-ARRAYMETODER – SNABBÖVERSIKT
+ARRAYMETODER – FÖRMIDDAG
 ==============================
 
-🟢 UTAN CALLBACK
+🟢 GRUNDER
 
 length
 - Antal element i arrayen
@@ -79,57 +81,4 @@ join()
 slice()
 - Skapar kopia av del av array (ändrar inte original)
 - Syntax: array.slice(start, end)
-
-concat()
-- Slår ihop arrayer
-- Syntax: array.concat(otherArray)
-
-
-🟡 MED CALLBACK (vanliga)
-
-forEach()
-- Kör kod för varje element
-- Syntax: array.forEach(element => { })
-
-find()
-- Returnerar första matchande värdet
-- Syntax: array.find(element => condition)
-
-findIndex()
-- Returnerar index för första match
-- Syntax: array.findIndex(element => condition)
-
-some()
-- Minst ett element uppfyller villkoret (true/false)
-- Syntax: array.some(element => condition)
-
-every()
-- Alla element uppfyller villkoret (true/false)
-- Syntax: array.every(element => condition)
-
-------------------------------------------------------
-Ger tillbaka en ny array
-------------------------------------------------------
-filter()
-- Returnerar alla som matchar villkor
-- Syntax: array.filter(element => condition)
-
-map()
-- Skapar ny array genom att ändra varje element
-- Syntax: array.map(element => newValue)
-
-
-
-
-
-🔵 MER AVANCERAD
-
-reduce()
-- Samlar ihop array till ett värde (t.ex. summa)
-- Syntax: array.reduce((acc, element) => { return newValue }, startValue)
-
-sort()
-- Sorterar array (ändrar original)
-- Syntax: array.sort()
-- Med compare: array.sort((a, b) => a - b)
 */
