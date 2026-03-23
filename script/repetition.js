@@ -3,7 +3,7 @@
 
 Metod        Returnerar                Används för            Mental modell                  Viktigt att tänka på
 ---------------------------------------------------------------------------------------------------------------
-forEach()    undefined                 göra saker             "Loopa & gör"                  Kan inte chainas, används för side effects
+forEach()    undefined                 göra saker             "Loopa & gör"                  Kan inte chainas
 map()        ny array                  förändra alla          "1 → 1 transformation"         Måste returnera något
 filter()     ny array                  välja flera            "Behåll vissa"                 Returnerar true/false i callbacken
 find()       ett värde / undefined     hitta en               "Första match vinner"          Stoppar vid första träff
