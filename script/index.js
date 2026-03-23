@@ -82,3 +82,24 @@ slice()
 - Skapar kopia av del av array (ändrar inte original)
 - Syntax: array.slice(start, end)
 */
+
+
+/*
+🔹 push()
+
+👉 Lägger till i slutet av arrayen
+
+
+🔹 pop()
+
+👉 Tar bort från slutet av arrayen
+
+🔹 unshift()
+
+👉 Lägger till i början av arrayen
+
+
+🔹 shift()
+
+👉 Tar bort från början av arrayen
+*/

@@ -24,6 +24,8 @@ students.forEach((student) => {
     console.log("-----------")
 })
 
+//Bra för att omvandla data
+
 console.log("-- 🗺️ map: skapa en ny array med bara namn --")
 const resultMap = students.map(student => student.name)
 
@@ -70,7 +72,7 @@ const findProduct = products.find(product => product.id === 8)
 console.log(findProduct)
 
 const promtFindProduct = prompt("Skriv produkt-id")
-
+p
 const productNumber = parseInt(promtFindProduct)
 //alt. parseInt
 
