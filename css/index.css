@@ -1,47 +1,16 @@
-/* Enkel, tydlig styling för textmaterialet */
-
-main {
-    max-width: 75ch;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    line-height: 1.6;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+.box {
+    width: 100px;
+    height: 100px;
 }
 
-h2 {
-    font-size: 1.8rem;
-    margin: 0 0 1rem;
-    letter-spacing: -0.02em;
+.red {
+    background-color: red;
 }
 
-h3 {
-    font-size: 1.25rem;
-    margin: 2rem 0 0.75rem;
+.green {
+    background-color: green;
 }
 
-p {
-    margin: 0.75rem 0;
-}
-
-ul {
-    margin: 0.75rem 0 1rem;
-    padding-left: 1.25rem;
-}
-
-li {
-    margin: 0.35rem 0;
-}
-
-code {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-    font-size: 0.95em;
-    padding: 0.15em 0.35em;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 6px;
-    background: rgba(0, 0, 0, 0.04);
-}
-
-/* Liten “info-känsla” om du vill markera viktiga stycken */
-p strong {
-    font-weight: 650;
+.blue {
+    background-color: blue;
 }
