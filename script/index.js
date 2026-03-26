@@ -13,13 +13,18 @@ todoForm.addEventListener("submit", (event) => {
         todoHelp.classList.add("text-danger")
 
     } else {
+        /* Reset error-message */
         todoHelp.textContent = "Input your todo in the text area"
         todoHelp.classList.remove("text-danger")
 
         /* <li> */
         const todoLi = document.createElement("li")
-        todoLi.textContent = todoInput.value
-        todoLi.classList.add("card", "p-3", "mt-3", "d-flex", "justify-content-between", "align-items-center", "flex-row")
+        todoLi.classList.add("list-group-item", "p-3", "mt-3", "d-flex", "justify-content-between", "align-items-center")
+
+        /* todo text */
+        const todoText = document.createElement("span")
+        todoText.textContent = todoInput.value
+        todoLi.appendChild(todoText)
 
         /* buttonwrapper */
         const buttonWrapper = document.createElement("div")
@@ -33,8 +38,8 @@ todoForm.addEventListener("submit", (event) => {
 
         doneButton.addEventListener("click", () => {
             todoLi.classList.toggle("bg-success-subtle")
-            todoLi.classList.toggle("text-decoration-line-through")
-            todoLi.classList.toggle("text-muted")
+            todoText.classList.toggle("text-decoration-line-through")
+            todoText.classList.toggle("text-muted")
         })
 
         /* Delete button */
