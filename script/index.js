@@ -11,19 +11,33 @@ button.addEventListener("click", () => {
     countText.textContent = `Antal klick: ${count}`
 })
 
-// colorButton.addEventListener("click", () => {
+// const createCounter = () => {
+//     let count = 0
 
-//     // if (colorBox.classList.contains("red")) {
-//     //     colorBox.classList.remove("red")
-//     //     colorBox.classList.add("blue")
-//     // } else {
-//     //     colorBox.classList.remove("blue")
-//     //     colorBox.classList.add("red")
-//     // }
+//     return () => {
+//         count++
+//         console.log(count)
+//         countText.textContent = `Antal klick: ${count}`
+//     }
+// }
 
-//     colorBox.classList.toggle("red")
-//     colorBox.classList.toggle("blue")
-// })
+// const handleClick = createCounter()
+
+// button.addEventListener("click", handleClick)
+
+colorButton.addEventListener("click", () => {
+
+    // if (colorBox.classList.contains("red")) {
+    //     colorBox.classList.remove("red")
+    //     colorBox.classList.add("blue")
+    // } else {
+    //     colorBox.classList.remove("blue")
+    //     colorBox.classList.add("red")
+    // }
+
+    colorBox.classList.toggle("red")
+    colorBox.classList.toggle("blue")
+})
 
 const colors = ["red", "green", "blue"]
 let index = 0
