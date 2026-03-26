@@ -2,8 +2,6 @@ const todoForm = document.getElementById("todoForm")
 const todoInput = document.getElementById("todoInput")
 const todoHelp = document.getElementById("todoHelp")
 const todoList = document.getElementById("todoList")
-const todo = document.querySelectorAll("li")
-
 
 todoForm.addEventListener("submit", (event) => {
     event.preventDefault()
@@ -18,13 +16,16 @@ todoForm.addEventListener("submit", (event) => {
         todoHelp.textContent = "Input your todo in the text area"
         todoHelp.classList.remove("text-danger")
 
+        /* <li> */
         const todoLi = document.createElement("li")
         todoLi.textContent = todoInput.value
         todoLi.classList.add("card", "p-3", "mt-3", "d-flex", "justify-content-between", "align-items-center", "flex-row")
 
+        /* buttonwrapper */
         const buttonWrapper = document.createElement("div")
         buttonWrapper.classList.add("d-flex", "gap-2")
 
+        /* Done button */
         const doneButton = document.createElement("button")
         buttonWrapper.appendChild(doneButton)
         doneButton.textContent = "Done"
@@ -36,6 +37,7 @@ todoForm.addEventListener("submit", (event) => {
             todoLi.classList.toggle("text-muted")
         })
 
+        /* Delete button */
         const deleteButton = document.createElement("button")
         buttonWrapper.appendChild(deleteButton)
         deleteButton.textContent = "X"
@@ -45,9 +47,13 @@ todoForm.addEventListener("submit", (event) => {
             todoLi.remove()
         })
 
-        todoList.appendChild(todoLi)
+        /* Add buttonwrapper to li */
         todoLi.appendChild(buttonWrapper)
 
+        /* Add li to ul */
+        todoList.appendChild(todoLi)
+
+        /* clear input value and set fokus to input field*/
         todoInput.value = ""
         todoInput.focus()
     }
