@@ -1,39 +1,77 @@
 const todoForm = document.getElementById("todoForm")
 const todoInput = document.getElementById("todoInput")
 const todoHelp = document.getElementById("todoHelp")
+const controlsContainer = document.getElementById("controlsContainer")
 const todoList = document.getElementById("todoList")
 
-const createTodo = (text) => {
+let todos = []
+
+const saveTodo = (text) => {
+    return {
+        id: crypto.randomUUID(),
+        text: text,
+        done: false,
+        createdAt: new Date().toISOString()
+    }
+}
+
+const saveTodosInLocalStorage = () => {
+    localStorage.setItem("todos", JSON.stringify(todos))
+}
+
+const getTodosFromLocalStorage = () => {
+    const storedTodos = localStorage.getItem("todos")
+
+    if (storedTodos) {
+        todos = JSON.parse(storedTodos)
+    }
+}
+
+const createTodoItem = (todoData) => {
     const todoLi = document.createElement("li")
-    const todoText = document.createElement("span")
     todoLi.classList.add("list-group-item", "p-3", "mt-3", "d-flex", "justify-content-between", "align-items-center")
 
-    todoText.textContent = text
+    const text = todoData.text
+    const todoText = createTodoText(text)
+
+    if (todoData.done) {
+        todoLi.classList.add("bg-success-subtle")
+    }
 
     todoLi.appendChild(todoText)
 
     return todoLi
 }
 
-const createDoneButton = (todo) => {
+const createTodoText = (text) => {
+    const todoText = document.createElement("span")
+    todoText.textContent = text
+    return todoText
+}
+
+const createDoneButton = (todoData) => {
     const doneButton = document.createElement("button")
     doneButton.textContent = "Done"
     doneButton.classList.add("btn", "btn-success", "btn-sm")
 
     doneButton.addEventListener("click", () => {
-        todo.classList.toggle("bg-success-subtle")
+        todoData.done = !todoData.done
+        saveTodosInLocalStorage()
+        renderTodos()
     })
 
     return doneButton
 }
 
-const createDeleteButton = (todo) => {
+const createDeleteButton = (todoData) => {
     const deleteButton = document.createElement("button")
     deleteButton.textContent = "X"
     deleteButton.classList.add("btn", "btn-danger", "btn-sm")
 
     deleteButton.addEventListener("click", () => {
-        todo.remove()
+        todos = todos.filter(todo => todo.id !== todoData.id)
+        saveTodosInLocalStorage()
+        renderTodos()
     })
 
     return deleteButton
@@ -46,13 +84,13 @@ const createButtonWrapper = () => {
     return buttonWrapper
 }
 
-const createTodoElement = (text) => {
-    const todo = createTodo(text)
+const createTodoElement = (todoData) => {
+    const todo = createTodoItem(todoData)
 
     const buttonWrapper = createButtonWrapper()
 
-    const doneButton = createDoneButton(todo)
-    const deleteButton = createDeleteButton(todo)
+    const doneButton = createDoneButton(todoData)
+    const deleteButton = createDeleteButton(todoData)
 
     buttonWrapper.appendChild(doneButton)
     buttonWrapper.appendChild(deleteButton)
@@ -61,18 +99,57 @@ const createTodoElement = (text) => {
     return todo
 }
 
+const renderTodos = () => {
+    todoList.innerHTML = ""
+
+    todos.forEach(todo => {
+        const todoElement = createTodoElement(todo)
+        todoList.appendChild(todoElement)
+    })
+}
+
+const createFilterButton = () => {
+    const filterButton = document.createElement("button")
+    filterButton.textContent = "Remove finished todos"
+    filterButton.classList.add("btn", "btn-info")
+
+    controlsContainer.appendChild(filterButton)
+
+    filterButton.addEventListener("click", () => {
+        todos = todos.filter((todo) => !todo.done)
+        saveTodosInLocalStorage()
+        renderTodos()
+    })
+}
+
 todoForm.addEventListener("submit", (event) => {
     event.preventDefault()
 
     const text = todoInput.value
 
-    const todoElement = createTodoElement(text)
+    if (text.trim() === "") {
+        todoInput.value = ""
+        todoInput.focus()
+        return
+    }
 
-    todoList.appendChild(todoElement)
+    const savedTodo = saveTodo(text)
+
+    todos.push(savedTodo)
+
+    saveTodosInLocalStorage()
+
+    renderTodos()
 
     todoInput.value = ""
     todoInput.focus()
 })
+
+getTodosFromLocalStorage()
+renderTodos()
+if (todos.length > 0) {
+    createFilterButton()
+}
 
 /* 
 ? event.preventDefault() 
