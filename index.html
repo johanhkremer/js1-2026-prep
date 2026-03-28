@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>DOM fort.</title>
+    <title>Todo App</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index.css">
@@ -11,25 +11,27 @@
 
 <body class="container min-vh-100 d-flex flex-column">
     <header>
-        <h1>Todo app</h1>
+        <h1>Todo App</h1>
     </header>
+
     <main class="flex-grow-1">
         <form id="todoForm">
             <div class="mb-3">
                 <label for="todoInput" class="form-label">Todo input</label>
-                <input type="text" class="form-control" id="todoInput" aria-describedby="todoHelp">
-                <div id="todoHelp" class="form-text">Input your todo in the text area</div>
+                <input type="text" class="form-control" id="todoInput" aria-describedby="todoInputHelp">
+                <div id="todoInputHelp" class="form-text">
+                    Enter your todo in the text field
+                </div>
             </div>
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
-        <section>
-            <div id="controlsContainer">
-
-            </div>
-            <ul class="list-group" id="todoList">
-            </ul>
+        <section id="todoListView">
+            <ul class="list-group" id="todoList"></ul>
         </section>
+
+        <section id="todoDetailView" class="d-none"></section>
     </main>
 
     <footer class="m-auto p-3">JS1 - DOM manipulation</footer>

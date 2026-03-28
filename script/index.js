@@ -1,12 +1,13 @@
 const todoForm = document.getElementById("todoForm")
 const todoInput = document.getElementById("todoInput")
-const todoHelp = document.getElementById("todoHelp")
-const controlsContainer = document.getElementById("controlsContainer")
+const todoListView = document.getElementById("todoListView")
+const todoDetailView = document.getElementById("todoDetailView")
 const todoList = document.getElementById("todoList")
 
 let todos = []
+let selectedTodoId = null
 
-const saveTodo = (text) => {
+const createTodo = (text) => {
     return {
         id: crypto.randomUUID(),
         text: text,
@@ -15,11 +16,11 @@ const saveTodo = (text) => {
     }
 }
 
-const saveTodosInLocalStorage = () => {
+const saveTodosToLocalStorage = () => {
     localStorage.setItem("todos", JSON.stringify(todos))
 }
 
-const getTodosFromLocalStorage = () => {
+const loadTodosFromLocalStorage = () => {
     const storedTodos = localStorage.getItem("todos")
 
     if (storedTodos) {
@@ -27,135 +28,194 @@ const getTodosFromLocalStorage = () => {
     }
 }
 
-const createTodoItem = (todoData) => {
-    const todoLi = document.createElement("li")
-    todoLi.classList.add("list-group-item", "p-3", "mt-3", "d-flex", "justify-content-between", "align-items-center")
-
-    const text = todoData.text
-    const todoText = createTodoText(text)
-
-    if (todoData.done) {
-        todoLi.classList.add("bg-success-subtle")
-    }
-
-    todoLi.appendChild(todoText)
-
-    return todoLi
+const getSelectedTodo = () => {
+    return todos.find((todo) => todo.id === selectedTodoId)
 }
 
-const createTodoText = (text) => {
+const createTodoTextElement = (todo) => {
     const todoText = document.createElement("span")
-    todoText.textContent = text
+    todoText.classList.add("cursor-pointer")
+    todoText.textContent = todo.text
+
+    todoText.addEventListener("click", () => {
+        selectedTodoId = todo.id
+        renderApp()
+    })
+
     return todoText
 }
 
-const createDoneButton = (todoData) => {
+const createTodoListItem = (todo) => {
+    const todoListItem = document.createElement("li")
+    todoListItem.classList.add(
+        "list-group-item",
+        "p-3",
+        "mt-3",
+        "d-flex",
+        "justify-content-between",
+        "align-items-center"
+    )
+
+    if (todo.done) {
+        todoListItem.classList.add("bg-success-subtle")
+    }
+
+    const todoTextElement = createTodoTextElement(todo)
+    todoListItem.appendChild(todoTextElement)
+
+    return todoListItem
+}
+
+const createTodoDetailCard = (todo) => {
+    const todoDetailCard = document.createElement("div")
+    todoDetailCard.classList.add("p-3", "border", "rounded", "mt-3")
+
+    if (todo.done) {
+        todoDetailCard.classList.add("bg-success-subtle")
+    }
+
+    const todoTitle = document.createElement("h2")
+    todoTitle.textContent = todo.text
+
+    const todoStatus = document.createElement("p")
+    todoStatus.textContent = todo.done ? "Status: Klar ✅" : "Status: Inte klar 🛑"
+
+    const todoCreatedAt = document.createElement("p")
+    todoCreatedAt.textContent = `Skapad: ${new Date(todo.createdAt).toLocaleString("sv-SE")}`
+
+    todoDetailCard.appendChild(todoTitle)
+    todoDetailCard.appendChild(todoStatus)
+    todoDetailCard.appendChild(todoCreatedAt)
+
+    return todoDetailCard
+}
+
+const createDoneButton = (todo) => {
     const doneButton = document.createElement("button")
     doneButton.textContent = "Done"
     doneButton.classList.add("btn", "btn-success", "btn-sm")
 
     doneButton.addEventListener("click", () => {
-        todoData.done = !todoData.done
-        saveTodosInLocalStorage()
-        renderTodos()
+        todo.done = !todo.done
+        saveTodosToLocalStorage()
+        renderApp()
     })
 
     return doneButton
 }
 
-const createDeleteButton = (todoData) => {
+const createDeleteButton = (todo) => {
     const deleteButton = document.createElement("button")
     deleteButton.textContent = "X"
     deleteButton.classList.add("btn", "btn-danger", "btn-sm")
 
     deleteButton.addEventListener("click", () => {
-        todos = todos.filter(todo => todo.id !== todoData.id)
-        saveTodosInLocalStorage()
-        renderTodos()
+        todos = todos.filter((currentTodo) => currentTodo.id !== todo.id)
+
+        if (selectedTodoId === todo.id) {
+            selectedTodoId = null
+        }
+
+        saveTodosToLocalStorage()
+        renderApp()
     })
 
     return deleteButton
 }
 
-const createButtonWrapper = () => {
-    const buttonWrapper = document.createElement("div")
-    buttonWrapper.classList.add("d-flex", "gap-2")
+const createBackButton = () => {
+    const backButton = document.createElement("button")
+    backButton.textContent = "Back to list"
+    backButton.classList.add("btn", "btn-secondary", "mb-3", "mt-3")
 
-    return buttonWrapper
+    backButton.addEventListener("click", () => {
+        selectedTodoId = null
+        renderApp()
+    })
+
+    return backButton
 }
 
-const createTodoElement = (todoData) => {
-    const todo = createTodoItem(todoData)
+const createButtonGroup = () => {
+    const buttonGroup = document.createElement("div")
+    buttonGroup.classList.add("d-flex", "gap-2")
 
-    const buttonWrapper = createButtonWrapper()
-
-    const doneButton = createDoneButton(todoData)
-    const deleteButton = createDeleteButton(todoData)
-
-    buttonWrapper.appendChild(doneButton)
-    buttonWrapper.appendChild(deleteButton)
-    todo.appendChild(buttonWrapper)
-
-    return todo
+    return buttonGroup
 }
 
-const renderTodos = () => {
+const createTodoListElement = (todo) => {
+    const todoListItem = createTodoListItem(todo)
+    const buttonGroup = createButtonGroup()
+
+    const doneButton = createDoneButton(todo)
+    const deleteButton = createDeleteButton(todo)
+
+    buttonGroup.appendChild(doneButton)
+    buttonGroup.appendChild(deleteButton)
+    todoListItem.appendChild(buttonGroup)
+
+    return todoListItem
+}
+
+const renderTodoListView = () => {
+    todoListView.classList.remove("d-none")
+    todoDetailView.classList.add("d-none")
     todoList.innerHTML = ""
 
-    todos.forEach(todo => {
-        const todoElement = createTodoElement(todo)
+    todos.forEach((todo) => {
+        const todoElement = createTodoListElement(todo)
         todoList.appendChild(todoElement)
     })
 }
 
-const createFilterButton = () => {
-    const filterButton = document.createElement("button")
-    filterButton.textContent = "Remove finished todos"
-    filterButton.classList.add("btn", "btn-info")
+const renderTodoDetailView = () => {
+    const selectedTodo = getSelectedTodo()
 
-    controlsContainer.appendChild(filterButton)
+    if (!selectedTodo) {
+        selectedTodoId = null
+        renderTodoListView()
+        return
+    }
 
-    filterButton.addEventListener("click", () => {
-        todos = todos.filter((todo) => !todo.done)
-        saveTodosInLocalStorage()
-        renderTodos()
-    })
+    todoListView.classList.add("d-none")
+    todoDetailView.classList.remove("d-none")
+    todoDetailView.innerHTML = ""
+
+    const backButton = createBackButton()
+    const todoDetailCard = createTodoDetailCard(selectedTodo)
+
+    todoDetailView.appendChild(todoDetailCard)
+    todoDetailView.appendChild(backButton)
+}
+
+const renderApp = () => {
+    if (selectedTodoId === null) {
+        renderTodoListView()
+    } else {
+        renderTodoDetailView()
+    }
 }
 
 todoForm.addEventListener("submit", (event) => {
     event.preventDefault()
 
-    const text = todoInput.value
+    const text = todoInput.value.trim()
 
-    if (text.trim() === "") {
+    if (text === "") {
         todoInput.value = ""
         todoInput.focus()
         return
     }
 
-    const savedTodo = saveTodo(text)
+    const newTodo = createTodo(text)
 
-    todos.push(savedTodo)
-
-    saveTodosInLocalStorage()
-
-    renderTodos()
+    todos.push(newTodo)
+    saveTodosToLocalStorage()
+    renderApp()
 
     todoInput.value = ""
     todoInput.focus()
 })
 
-getTodosFromLocalStorage()
-renderTodos()
-if (todos.length > 0) {
-    createFilterButton()
-}
-
-/* 
-? event.preventDefault() 
-
-Ett formulär försöker som standard skicka data och ladda om sidan.
-Eftersom vi vill hantera formuläret själva med JavaScript
-stoppar vi det vanliga beteendet med preventDefault().
-Annars hinner sidan laddas om innan vi kan jobba vidare med värdet.
-*/
+loadTodosFromLocalStorage()
+renderApp()
