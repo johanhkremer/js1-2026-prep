@@ -3,6 +3,7 @@ const todoInput = document.getElementById("todoInput")
 const todoListView = document.getElementById("todoListView")
 const todoDetailView = document.getElementById("todoDetailView")
 const todoList = document.getElementById("todoList")
+const numberOfTodos = document.getElementById("numberOfTodos")
 
 let todos = []
 let selectedTodoId = null
@@ -157,6 +158,10 @@ const createTodoListElement = (todo) => {
     return todoListItem
 }
 
+const renderNumberOfTodos = () => {
+    numberOfTodos.textContent = `Number of todos: ${todos.length}`
+}
+
 const renderTodoListView = () => {
     todoListView.classList.remove("d-none")
     todoDetailView.classList.add("d-none")
@@ -189,6 +194,8 @@ const renderTodoDetailView = () => {
 }
 
 const renderApp = () => {
+    renderNumberOfTodos()
+
     if (selectedTodoId === null) {
         renderTodoListView()
     } else {
