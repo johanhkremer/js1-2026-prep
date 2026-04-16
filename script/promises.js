@@ -1,5 +1,6 @@
 //Promises 👼🌞
 
+//Create promise
 function makeRamen() {
     return new Promise(function (resolve, reject) {
         const hasNoodles = true
@@ -50,6 +51,7 @@ function onError(error) {
     console.log("We couldn't make ramen because:", error)
 }
 
+//Recive promise
 makeRamen()
     .then(boilEgg)
     .then(onSuccess)
