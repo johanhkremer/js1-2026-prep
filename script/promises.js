@@ -1,3 +1,27 @@
+/*
+Ett Promise är ett löfte om att ett värde kommer senare.
+
+- används när något tar tid, t.ex. API-anrop eller timers
+- först är Promise "pending"
+- sedan blir det antingen:
+  - "fulfilled" = lyckades
+  - "rejected" = misslyckades
+
+Man kan ta emot resultatet med .then()
+och hantera fel med .catch()
+
+Exempel:
+fetch(url)
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error))
+
+Kort sagt:
+Promise = ett framtida värde
+.then() = vad som ska hända om det lyckas
+.catch() = vad som ska hända om det blir fel
+*/
+
 //Promises 👼🌞
 
 //Create promise
@@ -64,7 +88,7 @@ makeRamen()
 //     })
 // })
 
-//Ytterligare ett exempel
+//Steps
 
 const step1 = () => {
     return new Promise((resolve) => {
