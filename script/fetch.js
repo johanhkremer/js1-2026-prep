@@ -41,25 +41,48 @@ response = serverns svar
 response.json() = gör om svaret till användbar JavaScript-data
 */
 
-const characherForm = document.getElementById("characterForm")
+const characterForm = document.getElementById("characterForm")
 const characterIdInput = document.getElementById("characterIdInput")
 const characterCard = document.getElementById("characterCard")
 
 const getRickAndMortyCharacter = async (id) => {
+    const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`)
+
+    if (!response.ok) {
+        throw new Error("Karaktären kunde inte hittas")
+    }
+
+    const data = await response.json()
+    return data
+}
+
+const buildCharacterCard = (character) => {
+    const cardTitle = document.createElement("h2")
+    const characterImg = document.createElement("img")
+
+    cardTitle.textContent = character.name
+    characterImg.src = character.image
+
+    return { cardTitle, characterImg }
+}
+
+const renderError = (error) => {
+    const errorMessage = document.createElement("p")
+    errorMessage.classList.add("red")
+
+    errorMessage.textContent = error
+
+    characterCard.appendChild(errorMessage)
+}
+
+const renderCharacter = async (id) => {
     try {
-        const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`)
+        const character = await getRickAndMortyCharacter(id)
 
-        console.log(response)
+        const { cardTitle, characterImg } = buildCharacterCard(character)
 
-        if (!response.ok) {
-            throw new Error("Karaktären kunde inte hittas")
-        }
-
-        const data = await response.json()
-
-        console.log(data)
-
-        renderCharacterCard(data)
+        characterCard.appendChild(cardTitle)
+        characterCard.appendChild(characterImg)
 
     } catch (error) {
         console.log(error)
@@ -67,31 +90,16 @@ const getRickAndMortyCharacter = async (id) => {
     }
 }
 
-const renderCharacterCard = (character) => {
-    const cardTitle = document.createElement("h2")
-    const characterImg = document.createElement("img")
-
-    cardTitle.textContent = character.name
-    characterImg.src = character.image
-
-    characterCard.appendChild(cardTitle)
-    characterCard.appendChild(characterImg)
-}
-
-renderError = (error) => {
-    const errorMessage = document.createElement("p")
-
-    errorMessage.textContent = error
-
-    characterCard.appendChild(errorMessage)
-}
-
-characherForm.addEventListener("submit", (event) => {
+characterForm.addEventListener("submit", (event) => {
     event.preventDefault()
-
     characterCard.innerHTML = ""
 
-    const id = characterIdInput.value
+    const id = characterIdInput.value.trim()
 
-    getRickAndMortyCharacter(id)
+    if (!id) {
+        renderError("Du måste ange ett ID")
+        return
+    }
+
+    renderCharacter(id)
 })
