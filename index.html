@@ -12,11 +12,18 @@
     <main class="page">
         <h1>Weather API</h1>
 
+        <form id="cityForm">
+            <label for="cityInput">Skriv in en stad</label>
+            <input type="text" id="cityInput" name="city" placeholder="Till exempel Malmö" />
+            <button type="submit">Hämta väder</button>
+        </form>
 
+        <div id="currentWeatherCard">
 
+        </div>
     </main>
 
-    <script src="script/index.js"></script>
+    <script type="module" src="script/index.js"></script>
 </body>
 
 </html>
