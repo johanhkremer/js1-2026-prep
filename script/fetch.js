@@ -41,6 +41,7 @@ response = serverns svar
 response.json() = gör om svaret till användbar JavaScript-data
 */
 
+
 const characterForm = document.getElementById("characterForm")
 const characterIdInput = document.getElementById("characterIdInput")
 const characterCard = document.getElementById("characterCard")
