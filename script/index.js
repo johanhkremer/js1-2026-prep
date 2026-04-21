@@ -27,9 +27,16 @@ const getWeather = async (place) => {
 }
 
 const getCoordinates = async (place) => {
-    const response = await fetch(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${place},SE&limit=1&appid=${OPEN_WEATHER_API_KEY}`
-    )
+
+    /* 
+    Hela världen
+    `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(place)}&limit=5&appid=${OPEN_WEATHER_API_KEY}`
+    
+    Bara Sverige
+    `https://api.openweathermap.org/geo/1.0/direct?q=${place},SE&limit=1&appid=${OPEN_WEATHER_API_KEY}`
+    */
+
+    const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${place},SE&limit=1&appid=${OPEN_WEATHER_API_KEY}`)
 
     if (!response.ok) {
         throw new Error("Kunde inte hämta koordinater")
@@ -44,6 +51,8 @@ const renderWeatherCard = async (city) => {
     try {
         const cityWeather = await getWeather(city)
 
+        console.log(cityWeather)
+
         currentWeatherCard.innerHTML = `
         <h2>${cityWeather.name}</h2>
         <img 
@@ -56,6 +65,7 @@ const renderWeatherCard = async (city) => {
         <p>Luftfuktighet: ${cityWeather.main.humidity}%</p>
         <p>Vind: ${cityWeather.wind.speed} m/s</p>
     `
+        currentWeatherCard.classList.add("currentWeatherCard")
     } catch (error) {
         console.log("Something went wrong", error)
         currentWeatherCard.innerHTML = `
@@ -63,7 +73,6 @@ const renderWeatherCard = async (city) => {
         <p>${error.message}</p>
     `
     }
-
 }
 cityForm.addEventListener("submit", (event) => {
     event.preventDefault()
