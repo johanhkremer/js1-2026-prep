@@ -1,3 +1,5 @@
+//! Typkonvertering + -
+
 /* Logiska operatorer */
 
 /* Glöm inte be dem gissa vad resultatet blir och diskutera varför det blir ett visst resultat */
