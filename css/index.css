@@ -28,8 +28,7 @@ code {
     color: red
 }
 
-.currentWeatherCard {
-    max-width: fit-content;
+.weatherCard {
     padding: 1rem 3rem 1rem 3rem;
     margin-top: 10px;
     border: #222 solid 1px;
@@ -37,4 +36,21 @@ code {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#forecastContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.forecastCard {
+    padding: 0.5rem;
+    border: #222 solid 1px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
