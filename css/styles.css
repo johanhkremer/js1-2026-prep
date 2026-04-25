@@ -45,6 +45,11 @@ code {
     margin-top: 1rem;
 }
 
+.errorMessage {
+    grid-column: 1 / -1;
+    color: red
+}
+
 .forecastCard {
     padding: 0.5rem;
     border: #222 solid 1px;

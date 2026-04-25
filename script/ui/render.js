@@ -1,7 +1,21 @@
 import { getCurrentWeather } from "../services/weatherService.js"
 import { getForecastData } from "../services/weatherService.js"
-import { renderErrorState } from "../scripts.js"
-import { renderLoadState } from "../scripts.js"
+
+const currentWeatherContainer = document.getElementById("currentWeatherContainer")
+const forecastContainer = document.getElementById("forecastContainer")
+
+export const renderLoadState = (container, message) => {
+    container.innerHTML = `<p>${message}</p>`
+}
+
+export const renderErrorState = (container, error) => {
+    container.innerHTML = `
+        <div class="errorMessage">
+            <h2>Något gick fel</h2>
+            <p>${error.message}</p>
+        </div>
+    `
+}
 
 export const renderCurrentWeatherCard = async (lat, lon) => {
     try {
