@@ -1,5 +1,4 @@
-
-import { LAST_SEARCHED_CITY_KEY } from "../scripts.js"
+const LAST_SEARCHED_CITY_KEY = "lastSearchedCity"
 
 export const saveLastSearchedCity = (city) => {
     try {

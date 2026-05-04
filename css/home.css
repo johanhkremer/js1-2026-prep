@@ -1,0 +1,23 @@
+#cityForm {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+#cityInput,
+button {
+    font: inherit;
+    padding: 0.75rem;
+    border: 1px solid #bbbbbb;
+    border-radius: 6px;
+}
+
+button {
+    cursor: pointer;
+    background-color: #222222;
+    color: #ffffff;
+}
+
+#currentWeatherContainer {
+    margin-top: 1rem;
+}

@@ -1,16 +1,14 @@
 import { saveLastSearchedCity } from "./storage/localStorageService.js"
 import { getLastSearchedCity } from "./storage/localStorageService.js"
 import { getCoordinates } from "./services/weatherService.js"
-import { renderCurrentWeatherCard } from "./ui/render.js"
-import { renderForecast } from "./ui/render.js"
-import { renderLoadState } from "./ui/render.js"
-import { renderErrorState } from "./ui/render.js"
+import { renderCurrentWeatherCard } from "./ui/homeView.js"
+import { renderErrorState } from "./ui/shared.js"
 
 const cityForm = document.getElementById("cityForm")
 const cityInput = document.getElementById("cityInput")
-export const LAST_SEARCHED_CITY_KEY = "lastSearchedCity"
+const currentWeatherContainer = document.getElementById("currentWeatherContainer")
 
-const renderApp = async (city) => {
+const loadHomePage = async (city) => {
     try {
         const [location] = await getCoordinates(city)
 
@@ -19,13 +17,12 @@ const renderApp = async (city) => {
         }
 
         const { lat, lon } = location
+
         saveLastSearchedCity(city)
 
         renderCurrentWeatherCard(lat, lon)
-        renderForecast(lat, lon)
     } catch (error) {
         renderErrorState(currentWeatherContainer, error)
-        renderErrorState(forecastContainer, error)
     }
 }
 
@@ -33,7 +30,6 @@ cityForm.addEventListener("submit", (event) => {
     event.preventDefault()
 
     currentWeatherContainer.innerHTML = ""
-    forecastContainer.innerHTML = ""
 
     const city = cityInput.value.trim()
 
@@ -42,12 +38,12 @@ cityForm.addEventListener("submit", (event) => {
         return
     }
 
-    renderApp(city)
+    loadHomePage(city)
 })
 
 const lastSearchedCity = getLastSearchedCity()
 
 if (lastSearchedCity) {
     cityInput.value = lastSearchedCity
-    renderApp(lastSearchedCity)
+    loadHomePage(lastSearchedCity)
 }

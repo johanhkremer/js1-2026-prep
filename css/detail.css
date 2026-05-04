@@ -1,0 +1,33 @@
+.backLink {
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+#detailPageContainer {
+    margin-top: 1rem;
+}
+
+#forecastContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.forecastCard {
+    padding: 1rem;
+    text-align: center;
+}
+
+.forecastCard h3 {
+    margin-bottom: 0.5rem;
+}
+
+.forecastCard img {
+    width: 70px;
+    height: 70px;
+}
+
+.forecastCard p {
+    margin-bottom: 0.35rem;
+}
