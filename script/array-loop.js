@@ -84,3 +84,24 @@ for (let i = 0; i < students.length; i++) {
 
     console.log(`Kollar aktiv student: ${student.name}`)
 }
+
+
+
+for (let i = 10; i >= 1; i--) {
+    console.log(i)
+}
+
+for (let i = 0; i <= 20; i += 2) {
+    console.log(i)
+}
+
+for (let i = 1; i <= 10; i++) {
+    console.log(`5 x ${i} = ${5 * i}`)
+}
+
+let stars = ""
+
+for (let i = 1; i <= 5; i++) {
+    stars += "*"
+    console.log(stars)
+}
