@@ -1,8 +1,9 @@
 import { OPEN_WEATHER_API_KEY } from "../config.js"
+import type { Coordinates, CurrentWeather, ForecastData, LocationSearchResult } from "../types.js"
 
 const BASE_URL = "https://api.openweathermap.org"
 
-export const getCurrentWeather = async (lat, lon) => {
+export const getCurrentWeather = async ({ lat, lon }: Coordinates): Promise<CurrentWeather> => {
     const response = await fetch(
         `${BASE_URL}/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${OPEN_WEATHER_API_KEY}&units=metric&lang=sv`
     )
@@ -16,7 +17,7 @@ export const getCurrentWeather = async (lat, lon) => {
     return data
 }
 
-export const getForecastData = async (lat, lon) => {
+export const getForecastData = async ({ lat, lon }: Coordinates): Promise<ForecastData> => {
     const response = await fetch(
         `${BASE_URL}/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${OPEN_WEATHER_API_KEY}&units=metric&lang=sv`
     )
@@ -30,7 +31,7 @@ export const getForecastData = async (lat, lon) => {
     return data
 }
 
-export const getCoordinates = async (place) => {
+export const getCoordinates = async (place: string): Promise<LocationSearchResult[]> => {
     const query = encodeURIComponent(`${place},SE`)
 
     const response = await fetch(

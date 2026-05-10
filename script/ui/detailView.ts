@@ -1,17 +1,18 @@
 import { getCurrentWeather } from "../services/weatherService.js"
 import { getForecastData } from "../services/weatherService.js"
 import { renderErrorState, renderLoadState } from "./shared.js"
+import type { Coordinates } from "../types.js"
 
-const detailPageContainer = document.getElementById("detailPageContainer")
+const detailPageContainer = document.getElementById("detailPageContainer") as HTMLElement
 
-export const renderDetailedWeather = async (lat, lon) => {
+export const renderDetailedWeather = async ({ lat, lon }: Coordinates) => {
 
     try {
         renderLoadState(detailPageContainer, "Laddar detaljsida")
 
-        const currentWeather = await getCurrentWeather(lat, lon)
+        const currentWeather = await getCurrentWeather({ lat, lon })
 
-        const forecast = await getForecastData(lat, lon)
+        const forecast = await getForecastData({ lat, lon })
 
         const dailyForecasts = forecast.list.filter((forecastItem) => {
             return forecastItem.dt_txt.includes("12:00:00")
@@ -63,7 +64,7 @@ export const renderDetailedWeather = async (lat, lon) => {
             </section>
         `
 
-    } catch (error) {
+    } catch (error: unknown) {
         console.log("Something went wrong", error)
         renderErrorState(detailPageContainer, error)
     }

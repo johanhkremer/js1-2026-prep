@@ -1,13 +1,14 @@
 import { getCurrentWeather } from "../services/weatherService.js"
+import type { Coordinates } from "../types.js"
 import { renderErrorState, renderLoadState } from "./shared.js"
 
-const currentWeatherContainer = document.getElementById("currentWeatherContainer")
+const currentWeatherContainer = document.getElementById("currentWeatherContainer") as HTMLElement
 
-export const renderCurrentWeatherCard = async (lat, lon) => {
+export const renderCurrentWeatherCard = async ({ lat, lon }: Coordinates) => {
     try {
         renderLoadState(currentWeatherContainer, "Laddar dagens väder...")
 
-        const cityCurrentWeather = await getCurrentWeather(lat, lon)
+        const cityCurrentWeather = await getCurrentWeather({ lat, lon })
 
         currentWeatherContainer.innerHTML = `
         <a href="detailPage.html?code=${encodeURIComponent(cityCurrentWeather.name)}">
@@ -28,7 +29,7 @@ export const renderCurrentWeatherCard = async (lat, lon) => {
             </article>
         </a>
         `
-    } catch (error) {
+    } catch (error: unknown) {
         console.log("Something went wrong", error)
         renderErrorState(currentWeatherContainer, error)
     }

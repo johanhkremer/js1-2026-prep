@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+    "rootDir": "script",
+    "outDir": "dist",
+    "strict": true,
+    "verbatimModuleSyntax": true,
+    "noEmitOnError": true,
+    "skipLibCheck": true
+  },
+  "include": ["script/**/*.ts"],
+  "exclude": ["script/config.example.ts"]
+}

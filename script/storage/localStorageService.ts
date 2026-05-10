@@ -1,6 +1,6 @@
 const LAST_SEARCHED_CITY_KEY = "lastSearchedCity"
 
-export const saveLastSearchedCity = (city) => {
+export const saveLastSearchedCity = (city: string): void => {
     try {
         localStorage.setItem(LAST_SEARCHED_CITY_KEY, city)
     } catch (error) {
@@ -8,7 +8,7 @@ export const saveLastSearchedCity = (city) => {
     }
 }
 
-export const getLastSearchedCity = () => {
+export const getLastSearchedCity = (): string | null => {
     try {
         return localStorage.getItem(LAST_SEARCHED_CITY_KEY)
     } catch (error) {
