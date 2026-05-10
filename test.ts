@@ -13,7 +13,6 @@ console.log(city, temperature, isRaining)
 // TypeScript stoppar fel typ av varde.
 // const wrongTemperature: number = "arton"
 
-
 // 2. Type inference
 // TypeScript kan ofta lista ut typen sjalv.
 const country = "Sverige"
@@ -133,24 +132,15 @@ console.log(userWithEmail.email)
 
 
 // 11. Null och type narrowing
-// Nar nagot kan vara null maste vi kontrollera det innan vi anvander vardet.
-const findCity = (search: string): string | null => {
-    const savedCity = "Stockholm"
+let selectedCity: string | null = null
 
-    if (search === savedCity) {
-        return savedCity
-    }
-
-    return null
-}
-
-const foundCity = findCity("Stockholm")
-
-if (foundCity) {
-    console.log(foundCity.toUpperCase())
+if (selectedCity) {
+    console.log(selectedCity)
 } else {
-    console.log("Staden hittades inte")
+    console.log("Ingen stad ar vald")
 }
+
+selectedCity = "Stockholm"
 
 
 // 12. DOM-exempel
