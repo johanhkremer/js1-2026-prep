@@ -4,7 +4,6 @@ const fruitsWith = fruits.find(fruit => fruit.startsWith("🥭"))
 
 console.log(fruitsWith)
 
-
 const students = [
     { id: 1, name: "Alice", age: 23, active: true, course: "JavaScript" },
     { id: 2, name: "Bob", age: 19, active: false, course: "HTML/CSS" },
