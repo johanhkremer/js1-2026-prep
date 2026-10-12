@@ -92,7 +92,7 @@ console.log("Det finns:", array.length, "produkter på sidan")
 
 //! Intro Objects
 
-const teacher = {
+const teacherObject = {
     user: "johan",
     role: "teacher",
     age: 44,
